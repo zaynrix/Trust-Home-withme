@@ -1,7 +1,7 @@
 import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_themes/app_themes.dart';
-import 'package:final_project/features/on_boarding_feature/on_boarding_view.dart';
+import 'package:final_project/features/on_boarding_feature/view/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -5,7 +5,7 @@ import 'package:final_project/features/auth_feature/verification/view/verificati
 import 'package:final_project/features/auth_feature/forget_password/view/forget_pass_view.dart';
 import 'package:final_project/features/home_feature/view/home_view.dart';
 import 'package:get/get.dart';
-import '../../features/on_boarding_feature/on_boarding_view.dart';
+import '../../features/on_boarding_feature/view/on_boarding_view.dart';
 class AppRoutes{
   static String onBoarding='/onBoarding';
   static String signIN='/signIN';

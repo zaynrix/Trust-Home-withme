@@ -1,22 +1,35 @@
-import 'package:final_project/features/auth_feature/login_view.dart';
+import 'package:final_project/core/app_colors/app_colors.dart';
+import 'package:final_project/core/app_routes/app_routes.dart';
+import 'package:final_project/core/app_themes/app_themes.dart';
+import 'package:final_project/features/on_boarding_feature/on_boarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'core/app_sizes/app_sizes.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
+void main() => runApp(const MainApp());
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'عقار',
-
-      home:SignInScreen(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(AppSizes.screenWidth, AppSizes.screenHeight),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder:
+    (context , child)=> GetMaterialApp(
+debugShowCheckedModeBanner: false,
+theme: AppThemes.lightTheme,
+      textDirection: TextDirection.rtl,
+      getPages: AppRoutes().routes,
+      initialRoute: AppRoutes.getonBoardingRout(),
+    ));
   }
 }
+
+
 
 

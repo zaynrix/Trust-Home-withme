@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_screenutil: ^5.6.0
   hexcolor: ^3.0.1
+  popup_card: ^0.1.0
 
 dev_dependencies:
   flutter_test:

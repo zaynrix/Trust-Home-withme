@@ -4,8 +4,10 @@ import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/core/widgets/app_widgets.dart';
 import 'package:final_project/features/auth_feature/widgets/auth_layout.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../core/app_colors/app_colors.dart';
 import '../../../../core/app_images/app_images.dart';
 
 class VerificationScreen extends StatelessWidget {
@@ -27,30 +29,26 @@ class VerificationScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     )),
                 SizedBox(
-                  height: AppSizes.height40,
+                  height: AppSizes.height26.h,
                 ),
                 Container(
                   height: AppSizes.height20*5.h,
-                  child: GridView.count(
-                    crossAxisSpacing: AppSizes.height20,
-                    crossAxisCount: 4,
-                    children: List.generate(
-                        4,
-                        (index) => DefaultTextForm(
-                            textEditingController: TextEditingController(),
-                            textInputType: TextInputType.number,
-                            validator: (value)=>'',
-filled: true,
-                        ),
-                    ),
+                  child:    OtpTextField(
+                    numberOfFields: 4,
+                    fillColor: AppColors.primaryColor,
+                     fieldWidth: 50.w,
+                    showFieldAsBox: true,
+                    onSubmit: (String verificationCode){
+                      // c.codeController.text=verificationCode;
+                    }, // end onSubmit
                   ),
                 ),
-                DefaultButton(AppTexts.checkCode, AppRoutes.getoncreatePassRout()),
+                DefaultButton(AppTexts.checkCode.tr, AppRoutes.getoncreatePassRout()),
                 SizedBox(
                   height: AppSizes.height10,
                 ),
                 Text(
-                  AppTexts.resend,
+                  AppTexts.resend.tr,
                   style: context.theme.textTheme.headline5
                       ?.copyWith(fontSize: AppSizes.fontSize16),
                 ),
@@ -59,7 +57,7 @@ filled: true,
             ),
           ),
         ),
-        AppTexts.checkCode);
+        AppTexts.checkCode.tr);
   }
 
 

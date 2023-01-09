@@ -10,7 +10,7 @@ class AppThemes{
   static final ThemeData lightTheme=ThemeData.light().copyWith(
       primaryColorLight:AppColors.primaryColor ,
 primaryColor: AppColors.primaryColor,
-
+      focusColor:AppColors.primaryColor ,
     appBarTheme: AppBarTheme(
       elevation: 0.0,
       backgroundColor: AppColors.headLine2Color,
@@ -73,6 +73,19 @@ TextStyle(
         fontWeight: FontWeight.w700,
         fontFamily: AppTexts.appFontFamily
     ),
+      bodyText1: TextStyle(
+          color: AppColors.headLine1Color,
+          fontSize: AppSizes.fontSize18,
+          fontWeight: FontWeight.w600,
+          fontFamily: AppTexts.appFontFamily
+      ),
+
+      caption: TextStyle(
+          color: AppColors.hintTextColor,
+          fontSize: AppSizes.fontSize14,
+          fontWeight: FontWeight.w500,
+          fontFamily: AppTexts.appFontFamily
+      )
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: AppColors.primaryColor,
@@ -80,6 +93,12 @@ TextStyle(
           borderRadius: BorderRadius.circular(AppSizes.radius12)
       ),
    height: AppSizes.height57.h,minWidth: double.infinity
+    ),
+    cardTheme: CardTheme(
+      color: AppColors.backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radius8.r),
+      ),
     )
 
 

@@ -1,5 +1,6 @@
 import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,11 +16,13 @@ class DefaultTextForm extends StatelessWidget {
   FormFieldValidator<String> validator;
   GestureTapCallback? onTap;
   String? label;
+  String? hintText;
 Widget? iconData;
-  IconData? iconDataSuffixx;
+  Widget? iconDataSuffixx;
   bool isenable;
   bool hasPrefixIcon;
   bool? filled;
+  bool? hint;
   DefaultTextForm(
       {
         required this. textEditingController,
@@ -30,11 +33,13 @@ Widget? iconData;
         this.isPassword = false,
         required this.validator,
          this. label,
+         this. hintText,
         this. iconData,
         this. iconDataSuffixx,
         this. isenable = true,
         this. hasPrefixIcon = false,
-      this.filled=false});
+      this.filled=false,
+      this.hint=false});
   @override
   Widget build(BuildContext context) {
     return     TextFormField(
@@ -47,9 +52,16 @@ Widget? iconData;
       onTap: onTap,
       enabled: isenable,
       obscureText: isPassword,
+
 textAlign: filled!?TextAlign.center:TextAlign.start,
       decoration: InputDecoration(
+        suffixIcon: iconDataSuffixx,suffixIconConstraints: BoxConstraints(
+        maxWidth: 40,
+        maxHeight: 40
+      ),contentPadding: EdgeInsets.symmetric(horizontal: AppSizes.padding20),
           label: Text(label??''),
+          hintText:hintText ,
+          hintStyle: context.theme.textTheme.caption,
           labelStyle: context.theme.textTheme.headline3,
           filled: filled,
           fillColor: AppColors.containerColor,

@@ -20,5 +20,4 @@ static const double height74=74;
 static const double height494=494;
 static const double height478=478;
 static const double height189=189;
-
 }

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../core/app_images/app_images.dart';
 import '../../../core/app_texts/app_texts.dart';
-import '../model/onBoarding_model.dart';
 
 
 class OnBoardingController extends GetxController{
@@ -12,27 +11,29 @@ class OnBoardingController extends GetxController{
   bool isLast = false;
   int index=0;
   List<String> screens=[
-    AppRoutes.getonhomeRout(),
+    AppRoutes.getlayoutRout(),
     AppRoutes.getonsignINRout(),
     AppRoutes.getonsignUpRout(),
   ];
- /* List<OnboardingModel> board = [
-    OnboardingModel(
-        image:AppImages.onboardImage,
-        title: AppTexts.onBoardingTitle.tr,
-        description:AppTexts.onBoardingDescription.tr),
-*//*    OnboardingModel(
-        image: AppImages.onboard2,
-        title: AppTexts.onBoardingTitle2.tr,
-        description:AppTexts.description2.tr),
-    OnboardingModel(
-        image:
-        AppImages.onboard3,
-        title: AppTexts.onBoardingTitle3.tr,
-        description: AppTexts.description3.tr),*//*
+  List<String> onboardImages=[
+  AppImages.onboard1,
+  AppImages.onboard2,
+  AppImages.onboard3,
   ];
+  List<String> onboardTitles=[
+    AppTexts.onBoardingTitle.tr,
+    AppTexts.onBoardingTitle1.tr,
+    AppTexts.onBoardingTitle2.tr,
+  ];
+ List<String> onboardDes=[
+    AppTexts.onBoardingDescription.tr,
+    AppTexts.onBoardingDescription1.tr,
+    AppTexts.onBoardingDescription2.tr,
+  ];
+
+
   void  onPageChanged(index) {
-    if (index ==board.length - 1) {
+    if (index ==onboardImages.length - 1) {
       isLast = true;
       update(
 
@@ -45,5 +46,5 @@ class OnBoardingController extends GetxController{
       );
       print('not last');
     }
-  }*/
+  }
 }

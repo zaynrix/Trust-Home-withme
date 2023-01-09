@@ -19,6 +19,7 @@ class CreateNewPassScreen extends StatefulWidget {
 
 class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
 bool isCreate=false;
+var formKey=GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,59 +32,69 @@ bool isCreate=false;
               child: Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                          width: double.infinity,
-                          height: AppSizes.height189.h,
-                          child: Image.asset(
-                            AppImages.singInImage,
-                            fit: BoxFit.cover,
-                          )),
-                      SizedBox(
-                        height: AppSizes.height40,
-                      ),
+                  Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Container(
+                            width: double.infinity,
+                            height: AppSizes.height189.h,
+                            child: Image.asset(
+                              AppImages.singInImage,
+                              fit: BoxFit.cover,
+                            )),
+                        SizedBox(
+                          height: AppSizes.height40,
+                        ),
 
-                      DefaultTextForm(
-                          textEditingController: TextEditingController(),
-                          textInputType: TextInputType.visiblePassword,
-                          validator: ((value) => 'unCorrect Phone Number'),
-                          label: AppTexts.password,
-                          isPassword: true,
-                          iconData: Container(
-                              height: AppSizes.height10.h,
-                              width: AppSizes.height10.w,
-                              child: Image.asset(AppImages.lockIcon))),
-                      SizedBox(
-                        height: AppSizes.height20.h,
-                      ),
-                      DefaultTextForm(
-                          textEditingController: TextEditingController(),
-                          textInputType: TextInputType.visiblePassword,
-                          validator: ((value) => 'unCorrect Phone Number'),
-                          label: AppTexts.newPass,
-                          isPassword: true,
-                          iconData: Container(
-                              height: AppSizes.height10.h,
-                              width: AppSizes.height10.w,
-                              child: Image.asset(AppImages.lockIcon))),
+                        DefaultTextForm(
+                            textEditingController: TextEditingController(),
+                            textInputType: TextInputType.visiblePassword,
+                            validator: (((String? value) {
+                              if (value!.isEmpty) {
+                                return AppTexts.pleaseEnterPhone.tr;
+                              }
+                            })),
+                            label: AppTexts.password.tr,
+                            isPassword: true,
+                            iconData: Container(
+                                height: AppSizes.height10.h,
+                                width: AppSizes.height10.w,
+                                child: Image.asset(AppImages.lockIcon))),
+                        SizedBox(
+                          height: AppSizes.height20.h,
+                        ),
+                        DefaultTextForm(
+                            textEditingController: TextEditingController(),
+                            textInputType: TextInputType.visiblePassword,
+                            validator: ((value) {
+                              if (value!.isEmpty)
+                                return AppTexts.pleaseEnterPas.tr;
+                            }),
+                            label: AppTexts.newPass.tr,
+                            isPassword: true,
+                            iconData: Container(
+                                height: AppSizes.height10.h,
+                                width: AppSizes.height10.w,
+                                child: Image.asset(AppImages.lockIcon))),
 
-                      SizedBox(
-                        height: AppSizes.height20.h,
-                      ),
-                      DefaultButton(AppTexts.createNewPass,
-                          AppRoutes.getonhomeRout(),
-                        function: (){
-                        setState(() {
-                          isCreate==true;
-                        });
-                        },
-                      ),
-                      SizedBox(
-                        height: AppSizes.height20.h,
-                      ),
+                        SizedBox(
+                          height: AppSizes.height20.h,
+                        ),
+                        DefaultButton(AppTexts.createNewPass,
+                            AppRoutes.getonhomeRout(),
+                          function: (){
+                          setState(() {
+                            isCreate==true;
+                          });
+                          },
+                        ),
+                        SizedBox(
+                          height: AppSizes.height20.h,
+                        ),
 
-                    ],
+                      ],
+                    ),
                   ),
 
                 isCreate?  Card(
@@ -96,14 +107,14 @@ bool isCreate=false;
 children: [
   Image.asset(AppImages.readyImage),
 
-  Text(AppTexts.congrats,
+  Text(AppTexts.congrats.tr,
   style: context.theme.textTheme.headline5?.copyWith(
     fontSize: AppSizes.fontSize24
   ),),
   SizedBox(
     height: AppSizes.height10.h,
   ),
-  Text(AppTexts.ready,
+  Text(AppTexts.ready.tr,
     style: context.theme.textTheme.headline6,textAlign: TextAlign.center),
 
   SizedBox(
@@ -123,7 +134,7 @@ children: [
             ),
           ),
         ),
-        AppTexts.newPass
+        AppTexts.newPass.tr
     );
   }
 }

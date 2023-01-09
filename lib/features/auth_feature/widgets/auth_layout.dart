@@ -10,7 +10,7 @@ AuthLayout(this.pageContent,this.pagetitle);
     return  Scaffold(
         appBar: AppBar(
           backgroundColor: context.theme.scaffoldBackgroundColor,
-  title: Text(pagetitle),
+  title: Text(pagetitle.tr),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             onPressed: (){

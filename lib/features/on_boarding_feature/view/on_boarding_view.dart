@@ -1,18 +1,19 @@
+import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_images/app_images.dart';
+import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
-import 'package:final_project/features/on_boarding_feature/model/onBoarding_model.dart';
-import 'package:final_project/features/on_boarding_feature/widgets/onBoarding_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controller/onBoarding_controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
-
+PageController pageController=PageController();
   @override
   Widget build(BuildContext context) {
     /* void submit() {
@@ -29,75 +30,72 @@ class OnBoardingScreen extends StatelessWidget {
         builder: ((onboardingcontroller) =>
         Scaffold(
 
-          body: Column(
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.bottomEnd,
+          body: SafeArea(
+            child: Padding(
+              padding:  EdgeInsets.all(AppSizes.padding20.w.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Expanded(
+                    child: PageView.builder(
 
-                  Container(
+                        itemBuilder: (context, index) =>Column(
+                      children: [
+                        Image.asset(onboardingcontroller.onboardImages[index],height: 335,width: 335,),
 
-                    height: AppSizes.screenHeight.h,
-                    width: double.infinity, child: Image.asset(AppImages.onboardImage, fit: BoxFit.cover,),
-                  ),
-
-                  Container(
-
-
-
-                      width: double.infinity,
-
-
-
-
-
-
-
-
-
-
-
-                      decoration: BoxDecoration(
-
-
-
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(AppSizes.radius40),
-
-
-
+                        Text(onboardingcontroller.onboardTitles[index].toUpperCase(),
+                        style: context.theme.textTheme.headline1?.copyWith(
+                          fontSize: 18.sp
+                        ),
+                          textAlign: TextAlign.center,
+                        ),Text(onboardingcontroller.onboardDes[index],
+                        style: context.theme.textTheme.headline3,
+                          textAlign: TextAlign.center,
                         ),
 
+                      ],
+                    ),
+                    onPageChanged: (index)=>onboardingcontroller.onPageChanged(index),
+                    controller: pageController,
+                      itemCount: onboardingcontroller.onboardImages.length,
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(bottom:AppSizes.height40.h),
+                    child: SmoothPageIndicator(controller: pageController, count: onboardingcontroller.onboardImages.length,
+                    effect: WormEffect(
+                      activeDotColor: AppColors.primaryColor,
+                      dotColor: AppColors.primaryColor.withOpacity(0.7),
+                      dotWidth: AppSizes.radius12.w,
+                      dotHeight: AppSizes.radius8.h
+                    ),
+                    ),
+                  ),
 
 
-                        color: Colors.white,
-
-
-
-
-
-
-
-                      ),
-
-
-
-                      child: OnBoardingWidget(
-                         OnboardingModel(
-                            title: AppTexts.onBoardingTitle,
-                           description: AppTexts.onBoardingDescription
-                         ),
-                          AppTexts.buttonTexts,
-                          onboardingcontroller.screens
-                      )
-
-
-
+                  MaterialButton(onPressed: (){
+                    Get.offAndToNamed(AppRoutes.getlayoutRout());
+                  },
+                  child: Text(AppTexts.explore.tr,style: context.theme.textTheme.headline2,),
+                    color: AppColors.primaryColor,
+                  ),
+                  SizedBox(
+                    height: AppSizes.padding20.h,
+                  ),
+                  MaterialButton(onPressed: (){
+                    Get.toNamed(AppRoutes.getonsignINRout());
+                  },
+                  child: Text(AppTexts.signIn.tr,style: context.theme.textTheme.headline2,),
+                    color: AppColors.primaryColor,
+                  ),
+                  SizedBox(
+                    height: AppSizes.padding20.h,
                   ),
 
 
                 ],
               ),
-            ],
+            ),
           ),
 
         )

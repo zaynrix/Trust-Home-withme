@@ -7,20 +7,25 @@ import '../../../../core/app_colors/app_colors.dart';
 import '../../../../core/app_texts/app_texts.dart';
 
 class FilterWidgets extends StatelessWidget {
-  String selectedValue;
-  List<String> items;
-  Function changeValue;
-  FilterWidgets({required this.selectedValue,required this.items,required this.changeValue});
+  final String selectedValue;
+  final List<String> items;
+  final Function changeValue;
+
+  const FilterWidgets(
+      {super.key,
+      required this.selectedValue,
+      required this.items,
+      required this.changeValue});
+
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return SizedBox(
       width: double.infinity,
       child: DropdownButtonHideUnderline(
         child: DropdownButton2(
           isExpanded: true,
           hint: Row(
-            children:  [
-
+            children: [
               Expanded(
                 child: Text(
                   AppTexts.chooseState,
@@ -30,23 +35,23 @@ class FilterWidgets extends StatelessWidget {
               ),
             ],
           ),
-          items:items
+          items: items
               .map((item) => DropdownMenuItem<String>(
-            value: item,
-            child: Text(
-              item,
-              style:  TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ))
+                    value: item,
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ))
               .toList(),
           value: selectedValue,
           onChanged: (value) {
-           changeValue();
+            changeValue();
           },
           icon: const Icon(
             Icons.arrow_drop_down,
@@ -62,17 +67,17 @@ class FilterWidgets extends StatelessWidget {
             border: Border.all(
               color: Colors.black26,
             ),
-            color:AppColors.primaryColor,
+            color: AppColors.primaryColor,
           ),
           buttonElevation: 2,
           itemHeight: 40,
           itemPadding: const EdgeInsets.only(left: 14, right: 14),
           dropdownMaxHeight: 200,
           dropdownWidth: 200.w,
-          dropdownPadding: EdgeInsets.only(left: 14, right: 14),
+          dropdownPadding: const EdgeInsets.only(left: 14, right: 14),
           dropdownDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color:AppColors.primaryColor,
+            color: AppColors.primaryColor,
           ),
           dropdownElevation: 8,
           scrollbarRadius: const Radius.circular(40),

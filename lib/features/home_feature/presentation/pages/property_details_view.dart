@@ -4,7 +4,6 @@ import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/features/home_feature/presentation/controllers/home_controller.dart';
-import 'package:final_project/features/profile_feature/presentation/controllers/profile_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +17,7 @@ import '../../../../core/app_routes/app_routes.dart';
 import '../../../../core/widgets/app_widgets.dart';
 
 class PropertyDetailsScreen extends StatefulWidget {
-  PropertyDetailsScreen({Key? key}) : super(key: key);
+  const PropertyDetailsScreen({Key? key}) : super(key: key);
 
   @override
   _PropertyDetailsScreenState createState() => _PropertyDetailsScreenState();
@@ -47,7 +46,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
   int swipeSensitivity = 2;
   bool allowSwipeToRotate = true;
   RotationDirection rotationDirection = RotationDirection.anticlockwise;
-  Duration frameChangeDuration = Duration(milliseconds: 50);
+  Duration frameChangeDuration = const Duration(milliseconds: 50);
   bool imagePrecached = false;
 
   @override
@@ -58,12 +57,12 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
     super.initState();
   }
 
-  CameraPosition _kGooglePlex = CameraPosition(
+  final CameraPosition _kGooglePlex = const CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
 
-  CameraPosition _kLake = CameraPosition(
+  final CameraPosition _kLake = const CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
@@ -73,7 +72,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(AppTexts.detailesScreenTitle),
+          title: const Text(AppTexts.detailesScreenTitle),
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor),
       body: SingleChildScrollView(
@@ -87,7 +86,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   Center(
-                    child: Container(
+                    child: SizedBox(
                       width: 315.w,
                       height: 180.h,
                       child: PageView.builder(
@@ -141,7 +140,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                                             RotationDirection
                                                                 .anticlockwise,
                                                         frameChangeDuration:
-                                                            Duration(
+                                                            const Duration(
                                                                 milliseconds:
                                                                     50),
                                                         swipeSensitivity:
@@ -150,11 +149,11 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                                             allowSwipeToRotate,
                                                         onImageIndexChanged:
                                                             (currentImageIndex) {
-                                                          print(
-                                                              "currentImageIndex: $currentImageIndex");
+                                                          // print(
+                                                          //     "currentImageIndex: $currentImageIndex");
                                                         },
                                                       )
-                                                    : Text(
+                                                    : const Text(
                                                         "Pre-Caching images..."),
                                               ],
                                             ),
@@ -177,7 +176,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                                     child: IconButton(
                                       padding: EdgeInsets.zero,
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.slow_motion_video_rounded,
                                         color: Colors.white,
                                         size: 22,
@@ -208,7 +207,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: SmoothPageIndicator(
                       effect: WormEffect(
                           dotColor: AppColors.backgroundColor,
@@ -224,7 +223,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: 100.h,
                 child: ListView.separated(
@@ -264,13 +263,11 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
-              Container(
-                child: Text(
-                  AppTexts.propertyDiscreption,
-                  style: context.theme.textTheme.headline3,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
+              Text(
+                AppTexts.propertyDiscreption,
+                style: context.theme.textTheme.headline3,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(
                 height: AppSizes.padding20.w,
@@ -289,31 +286,29 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
-              Container(
-                child: Card(
-                  child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: EdgeInsets.all(10),
-                      crossAxisCount: 3,
-                      children: List.generate(
-                          AppTexts.estateDetails.length,
-                          (index) => Card(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      AppTexts.estateDetails[index],
-                                      style: context.theme.textTheme.headline3,
-                                    ),
-                                    Icon(
-                                      controller.icons[index],
-                                      color: AppColors.headLine3Color,
-                                    )
-                                  ],
-                                ),
-                              ))),
-                ),
+              Card(
+                child: GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(10),
+                    crossAxisCount: 3,
+                    children: List.generate(
+                        AppTexts.estateDetails.length,
+                        (index) => Card(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppTexts.estateDetails[index],
+                                    style: context.theme.textTheme.headline3,
+                                  ),
+                                  Icon(
+                                    controller.icons[index],
+                                    color: AppColors.headLine3Color,
+                                  )
+                                ],
+                              ),
+                            ))),
               ),
               SizedBox(
                 height: AppSizes.padding20.h,
@@ -325,21 +320,16 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.h,
               ),
-              Container(
-                height: 300,
-                child:
-                Image.asset(AppImages.mapImage)
-                
-                
-                
-                /*GoogleMap(
+              SizedBox(height: 300, child: Image.asset(AppImages.mapImage)
+
+                  /*GoogleMap(
                   mapType: MapType.hybrid,
                   initialCameraPosition: _kGooglePlex,
                   onMapCreated: (GoogleMapController controller) {
                     _controller.complete(controller);
                   },
                 ),*/
-              ),
+                  ),
               SizedBox(
                 height: AppSizes.padding20.h,
               ),
@@ -355,26 +345,36 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                   padding: EdgeInsets.all(AppSizes.height10.h.w),
                   child: Row(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundImage: ExactAssetImage(
                           AppImages.agentImage,
-
-
                         ),
-                        radius: AppSizes.radius12*3,
+                        radius: AppSizes.radius12 * 3,
                       ),
-                      SizedBox(width: AppSizes.height10.w,),
+                      SizedBox(
+                        width: AppSizes.height10.w,
+                      ),
                       Text(
                         AppTexts.userPhoneNumber,
                         style: context.theme.textTheme.headline4,
                       ),
-                      Spacer(),
-                      IconButton(onPressed: (){
-                        launch("tel://0597786890");
-                      }, icon: Icon(Icons.call_outlined,color: AppColors.primaryColor,)),
-                      IconButton(onPressed: (){
-                        Get.toNamed(AppRoutes.getchatRout());
-                      }, icon: Icon(Icons.email,color: AppColors.primaryColor,)),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            launch("tel://0597786890");
+                          },
+                          icon: Icon(
+                            Icons.call_outlined,
+                            color: AppColors.primaryColor,
+                          )),
+                      IconButton(
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.getChatRout());
+                          },
+                          icon: Icon(
+                            Icons.email,
+                            color: AppColors.primaryColor,
+                          )),
                     ],
                   ),
                 ),
@@ -382,7 +382,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
-              DefaultButton(AppTexts.bookNow, AppRoutes.getbookingRout()),
+              DefaultButton(AppTexts.bookNow, AppRoutes.getBookingRout()),
             ],
           ),
         ),

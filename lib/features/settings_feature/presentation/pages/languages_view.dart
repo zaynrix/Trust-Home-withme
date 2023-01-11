@@ -5,27 +5,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/app_colors/app_colors.dart';
-import '../../../../core/app_images/app_images.dart';
-import '../../../../core/app_routes/app_routes.dart';
 import '../../../../core/app_sizes/app_sizes.dart';
 import '../../../../core/app_texts/app_texts.dart';
 
 class LangScreen extends GetView<SettingController> {
+  const LangScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:     AppBar(
-        title: Text(AppTexts.langs),
+      appBar: AppBar(
+        title: const Text(AppTexts.langs),
         backgroundColor: context.theme.scaffoldBackgroundColor,
       ),
       body: SafeArea(
-
         child: Column(
           children: [
-
             Padding(
-              padding:  EdgeInsets.all(AppSizes.padding20.h.w),
+              padding: EdgeInsets.all(AppSizes.padding20.h.w),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -34,8 +31,9 @@ class LangScreen extends GetView<SettingController> {
                         children: [
                           SizedBox(height: 20.h),
                           ListTile(
-                              title: Text(AppTexts.system.tr,
-                              style: context.theme.textTheme.headline6,
+                              title: Text(
+                                AppTexts.system.tr,
+                                style: context.theme.textTheme.headline6,
                               ),
                               leading: Radio<Language>(
                                   activeColor: AppColors.primaryColor,
@@ -43,19 +41,19 @@ class LangScreen extends GetView<SettingController> {
                                   groupValue: controller.language,
                                   onChanged: (value) {
                                     setState(
-                                          () {
-
-                                       controller.language = value!;
-                                       SharedPrefs.saveData(key: 'value', value: value);
+                                      () {
+                                        controller.language = value!;
+                                        SharedPrefs.saveData(
+                                            key: 'value', value: value);
                                       },
                                     );
-                                    controller
-                                    .update();
-                                 controller.changeLang( Get.deviceLocale.toString())  ;
-
+                                    controller.update();
+                                    controller.changeLang(
+                                        Get.deviceLocale.toString());
                                   })),
                           ListTile(
-                            title:Text(AppTexts.arabic.tr,
+                            title: Text(
+                              AppTexts.arabic.tr,
                               style: context.theme.textTheme.headline6,
                             ),
                             leading: Radio<Language>(
@@ -64,37 +62,37 @@ class LangScreen extends GetView<SettingController> {
                                 groupValue: controller.language,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       controller.language = value!;
-                                      SharedPrefs.saveData(key: 'value', value: value);
+                                      SharedPrefs.saveData(
+                                          key: 'value', value: value);
                                     },
                                   );
-                                  controller.  update();
+                                  controller.update();
                                   controller.changeLang('ar');
-
-
                                 }),
                           ),
                           ListTile(
-                            title: Text(AppTexts.english.tr,
+                            title: Text(
+                              AppTexts.english.tr,
                               style: context.theme.textTheme.headline6,
                             ),
-                            leading: Radio<Language>(activeColor: AppColors.primaryColor,
+                            leading: Radio<Language>(
+                                activeColor: AppColors.primaryColor,
                                 value: Language.English,
                                 groupValue: controller.language,
                                 onChanged: (value) {
                                   setState(
-                                        () {
+                                    () {
                                       controller.language = value!;
-                                      SharedPrefs.saveData(key: 'value', value: value);
+                                      SharedPrefs.saveData(
+                                          key: 'value', value: value);
                                     },
                                   );
                                   controller.update();
-                                 controller. changeLang('en');
-
+                                  controller.changeLang('en');
                                 }),
                           ),
-
                         ],
                       ),
                     ),
@@ -106,6 +104,5 @@ class LangScreen extends GetView<SettingController> {
         ),
       ),
     );
-
   }
 }

@@ -21,7 +21,7 @@ class VerificationScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
+                SizedBox(
                     width: double.infinity,
                     height: AppSizes.height189.h,
                     child: Image.asset(
@@ -31,7 +31,7 @@ class VerificationScreen extends StatelessWidget {
                 SizedBox(
                   height: AppSizes.height26.h,
                 ),
-                Container(
+                SizedBox(
                   height: AppSizes.height20*5.h,
                   child:    OtpTextField(
                     numberOfFields: 4,
@@ -43,8 +43,8 @@ class VerificationScreen extends StatelessWidget {
                     }, // end onSubmit
                   ),
                 ),
-                DefaultButton(AppTexts.checkCode.tr, AppRoutes.getoncreatePassRout()),
-                SizedBox(
+                DefaultButton(AppTexts.checkCode.tr, AppRoutes.getCreatePassRout()),
+                const SizedBox(
                   height: AppSizes.height10,
                 ),
                 Text(

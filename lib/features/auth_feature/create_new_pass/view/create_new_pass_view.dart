@@ -11,15 +11,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CreateNewPassScreen extends StatefulWidget {
-   CreateNewPassScreen({Key? key}) : super(key: key);
+  const CreateNewPassScreen({Key? key}) : super(key: key);
 
   @override
   State<CreateNewPassScreen> createState() => _CreateNewPassScreenState();
 }
 
 class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
-bool isCreate=false;
-var formKey=GlobalKey<FormState>();
+  bool isCreate = false;
+  var formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ var formKey=GlobalKey<FormState>();
         SafeArea(
           top: true,
           child: Padding(
-            padding:  EdgeInsets.all(AppSizes.padding20.w.h),
+            padding: EdgeInsets.all(AppSizes.padding20.w.h),
             child: SingleChildScrollView(
               child: Stack(
                 alignment: AlignmentDirectional.center,
@@ -36,17 +36,16 @@ var formKey=GlobalKey<FormState>();
                     key: formKey,
                     child: Column(
                       children: [
-                        Container(
+                        SizedBox(
                             width: double.infinity,
                             height: AppSizes.height189.h,
                             child: Image.asset(
                               AppImages.singInImage,
                               fit: BoxFit.cover,
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: AppSizes.height40,
                         ),
-
                         DefaultTextForm(
                             textEditingController: TextEditingController(),
                             textInputType: TextInputType.visiblePassword,
@@ -57,7 +56,7 @@ var formKey=GlobalKey<FormState>();
                             })),
                             label: AppTexts.password.tr,
                             isPassword: true,
-                            iconData: Container(
+                            iconData: SizedBox(
                                 height: AppSizes.height10.h,
                                 width: AppSizes.height10.w,
                                 child: Image.asset(AppImages.lockIcon))),
@@ -68,73 +67,72 @@ var formKey=GlobalKey<FormState>();
                             textEditingController: TextEditingController(),
                             textInputType: TextInputType.visiblePassword,
                             validator: ((value) {
-                              if (value!.isEmpty)
+                              if (value!.isEmpty) {
                                 return AppTexts.pleaseEnterPas.tr;
+                              }
                             }),
                             label: AppTexts.newPass.tr,
                             isPassword: true,
-                            iconData: Container(
+                            iconData: SizedBox(
                                 height: AppSizes.height10.h,
                                 width: AppSizes.height10.w,
                                 child: Image.asset(AppImages.lockIcon))),
-
                         SizedBox(
                           height: AppSizes.height20.h,
                         ),
-                        DefaultButton(AppTexts.createNewPass,
-                            AppRoutes.getonhomeRout(),
-                          function: (){
-                          setState(() {
-                            isCreate==true;
-                          });
+                        DefaultButton(
+                          AppTexts.createNewPass,
+                          AppRoutes.getHomeRout(),
+                          function: () {
+                            setState(() {
+                              isCreate == true;
+                            });
                           },
                         ),
                         SizedBox(
                           height: AppSizes.height20.h,
                         ),
-
                       ],
                     ),
                   ),
-
-                isCreate?  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSizes.radius40.r),
-                    ),
-                    child: Padding(
-                      padding:  EdgeInsets.all(AppSizes.padding20.h.w),
-                      child: Column(
-children: [
-  Image.asset(AppImages.readyImage),
-
-  Text(AppTexts.congrats.tr,
-  style: context.theme.textTheme.headline5?.copyWith(
-    fontSize: AppSizes.fontSize24
-  ),),
-  SizedBox(
-    height: AppSizes.height10.h,
-  ),
-  Text(AppTexts.ready.tr,
-    style: context.theme.textTheme.headline6,textAlign: TextAlign.center),
-
-  SizedBox(
-    height: AppSizes.height10.h,
-  ),
-  CircularProgressIndicator(
-    color: AppColors.primaryColor,
-
-  )
-],
-                      ),
-                    ),
-                  )
-                    :SizedBox()
+                  isCreate
+                      ? Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(AppSizes.radius40.r),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(AppSizes.padding20.h.w),
+                            child: Column(
+                              children: [
+                                Image.asset(AppImages.readyImage),
+                                Text(
+                                  AppTexts.congrats.tr,
+                                  style: context.theme.textTheme.headline5
+                                      ?.copyWith(fontSize: AppSizes.fontSize24),
+                                ),
+                                SizedBox(
+                                  height: AppSizes.height10.h,
+                                ),
+                                Text(AppTexts.ready.tr,
+                                    style: context.theme.textTheme.headline6,
+                                    textAlign: TextAlign.center),
+                                SizedBox(
+                                  height: AppSizes.height10.h,
+                                ),
+                                const CircularProgressIndicator(
+                                  color: AppColors.primaryColor,
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      : const SizedBox()
                 ],
               ),
             ),
           ),
         ),
-        AppTexts.newPass.tr
-    );
+        AppTexts.newPass.tr);
   }
 }

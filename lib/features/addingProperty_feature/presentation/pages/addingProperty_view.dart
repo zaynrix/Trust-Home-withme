@@ -79,8 +79,8 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
                       // iconDisabledColor: Colors.grey,
                       buttonHeight: 50,
                       buttonWidth: 160,
-                      buttonPadding:
-                          EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      buttonPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       buttonDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
@@ -90,12 +90,12 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
                       ),
 
                       itemHeight: 40,
-                      itemPadding:
-                          EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      itemPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       // dropdownMaxHeight: 200,
                       // dropdownWidth: 200,
-                      dropdownPadding:
-                          EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      dropdownPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       dropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                       ),
@@ -110,31 +110,30 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: AppSizes.padding20.h),
-                child:  Card(
+                child: Card(
                   child: Padding(
                     padding: EdgeInsets.all(AppSizes.height10.h.w),
                     child: InkWell(
                       onTap: () => controller.pickImg(),
                       child: Row(
                         children: [
-                          GetBuilder<AddingPropertyController>(builder: (controller)
-                          {
-                            if(controller.image==null){
-                              return SizedBox();
-                            }else {
-                              return  Container(
-
-                                height: 100,
-
-                                child: Image.file(File(controller.image!.path,),
-
-                                ),
-                              );
-                            }
-
-                          },
+                          GetBuilder<AddingPropertyController>(
+                            builder: (controller) {
+                              if (controller.image == null) {
+                                return const SizedBox();
+                              } else {
+                                return SizedBox(
+                                  height: 100,
+                                  child: Image.file(
+                                    File(
+                                      controller.image!.path,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
                           ),
-                          Icon(
+                          const Icon(
                             Icons.photo_library_outlined,
                             size: 40,
                             color: AppColors.headLine3Color,
@@ -154,30 +153,29 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
                   padding: EdgeInsets.all(AppSizes.height10.h.w),
                   child: Row(
                     children: [
-                      GetBuilder<AddingPropertyController>(builder: (controller)
-                     {
-                        if(controller.idImage==null){
-                            return SizedBox();
-                        }else {
-                          return  Container(
-
-                            height: 100,
-
-                            child: Image.file(File(controller.idImage!.path,),
-
-                            ),
-                          );
-                        }
-
-                      },
+                      GetBuilder<AddingPropertyController>(
+                        builder: (controller) {
+                          if (controller.idImage == null) {
+                            return const SizedBox();
+                          } else {
+                            return SizedBox(
+                              height: 100,
+                              child: Image.file(
+                                File(
+                                  controller.idImage!.path,
+                                ),
+                              ),
+                            );
+                          }
+                        },
                       ),
                       InkWell(
-    onTap: () => controller.pickIdImg(),
-          child: Icon(
-            Icons.photo_library_outlined,
-            size: 40,
-            color: AppColors.headLine3Color,
-          ),
+                        onTap: () => controller.pickIdImg(),
+                        child: const Icon(
+                          Icons.photo_library_outlined,
+                          size: 40,
+                          color: AppColors.headLine3Color,
+                        ),
                       ),
                       Text(
                         AppTexts.idImage.tr,
@@ -190,42 +188,45 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
               SizedBox(
                 height: AppSizes.padding20.h,
               ),
-
-              MaterialButton(onPressed: (){
-                Get.dialog(
-                  Center(
+              MaterialButton(
+                onPressed: () {
+                  Get.dialog(Center(
                     child: Container(
                       margin: EdgeInsets.all(AppSizes.padding20.h.w),
                       padding: EdgeInsets.all(AppSizes.padding20.h.w),
                       height: AppSizes.height478.h,
-                      width: AppSizes.screenWidth-20.w,
+                      width: AppSizes.screenWidth - 20.w,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(AppSizes.radius12.r)
-                      ),
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.circular(AppSizes.radius12.r)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(AppImages.readyImage, height: AppSizes.height189,
-                          width:AppSizes.height189 ,
+                          Image.asset(
+                            AppImages.readyImage,
+                            height: AppSizes.height189,
+                            width: AppSizes.height189,
                           ),
-                          Text(AppTexts.dataSent.tr,
-                          style: context.theme.textTheme.headline1,
+                          Text(
+                            AppTexts.dataSent.tr,
+                            style: context.theme.textTheme.headline1,
                           ),
-                          Text(AppTexts.dataSentDescription.tr,
-                          style: context.theme.textTheme.headline4,
+                          Text(
+                            AppTexts.dataSentDescription.tr,
+                            style: context.theme.textTheme.headline4,
                             textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                     ),
-                  )
-                );
-              },
+                  ));
+                },
                 color: AppColors.primaryColor,
-              child: Text(AppTexts.saveAndSent.tr,
-              style: context.theme.textTheme.headline2,
-              ),
+                child: Text(
+                  AppTexts.saveAndSent.tr,
+                  style: context.theme.textTheme.headline2,
+                ),
               )
             ],
           ),

@@ -2,19 +2,20 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class AppColors{
+class AppColors {
   //static final Color primaryColor=HexColor('#0347C8');
- static final Color primaryColor=HexColor('#26385e');
-  static final Color headLine1Color=HexColor('#374053');
-  static final Color headLine2Color=HexColor('#ffffff');
-  static final Color headLine3Color=HexColor('#A7A9B7');
-  static final Color headLine4Color=HexColor('#000000');
-  static final Color containerColor=HexColor('#EFEFEF');
-  static final Color borderColor=HexColor('#B5B5B5');
-  static final Color backgroundColor=HexColor('#F4F4F4');
-  static final Color iconsColor=HexColor('#252B5C');
-  static final Color hintTextColor=HexColor('#DDDFDF');
-  static final Color hintText1Color=Colors.lightBlueAccent;
+  static const Color primaryColor = Color(0xff0347c8);
 
-
+  // static const Color primaryColor = Color(0xff26385e);
+  static const Color headLine1Color = Color(0xff374053);
+  static const Color headLine2Color = Colors.white;
+  static const Color headLine3Color = Color(0xffA7A9B7);
+  static const Color headLine4Color = Color(0xff000000);
+  static const Color containerColor = Color(0xffEFEFEF);
+  static const Color borderColor = Color(0xffB5B5B5);
+  static const Color backgroundColor = Color(0xffF4F4F4);
+  static const Color iconsColor = Color(0xff252B5C);
+  static const Color secIconsColor = Color(0xff234f68);
+  static const Color hintTextColor = Color(0xffDDDFDF);
+  static const Color hintText1Color = Colors.lightBlueAccent;
 }

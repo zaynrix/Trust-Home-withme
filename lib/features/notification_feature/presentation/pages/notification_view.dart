@@ -34,7 +34,7 @@ class NotificationScreen extends StatelessWidget {
 
                 Text(AppTexts.emptyNotification.tr,style: context.theme.textTheme.headline3,),
                 SizedBox(height: AppSizes.padding20.h,),
-                DefaultButton(AppTexts.explore.tr, AppRoutes.getlayoutRout()),
+                DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
               ],
             ),
           ),

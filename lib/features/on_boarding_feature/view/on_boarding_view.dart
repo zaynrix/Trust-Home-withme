@@ -74,7 +74,7 @@ PageController pageController=PageController();
 
 
                   MaterialButton(onPressed: (){
-                    Get.offAndToNamed(AppRoutes.getlayoutRout());
+                    Get.offAndToNamed(AppRoutes.getLayoutRout());
                   },
                   child: Text(AppTexts.explore.tr,style: context.theme.textTheme.headline2,),
                     color: AppColors.primaryColor,
@@ -83,7 +83,7 @@ PageController pageController=PageController();
                     height: AppSizes.padding20.h,
                   ),
                   MaterialButton(onPressed: (){
-                    Get.toNamed(AppRoutes.getonsignINRout());
+                    Get.toNamed(AppRoutes.getSignINRout());
                   },
                   child: Text(AppTexts.signIn.tr,style: context.theme.textTheme.headline2,),
                     color: AppColors.primaryColor,

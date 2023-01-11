@@ -6,15 +6,14 @@ import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/core/widgets/app_widgets.dart';
 import 'package:final_project/features/filter_feature/presentation/controllers/filter_controller.dart';
-import 'package:final_project/features/home_feature/presentation/widgets/home_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class FilterScreen extends GetView<FilterController> {
+  const FilterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +24,19 @@ class FilterScreen extends GetView<FilterController> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.all(AppSizes.padding20.w.h),
+          padding: EdgeInsets.all(AppSizes.padding20.w.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               StatefulBuilder(
-           builder: (BuildContext context, StateSetter setState)=>
-              Container(
+                builder: (BuildContext context, StateSetter setState) =>
+                    SizedBox(
                   width: double.infinity,
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton2(
                       isExpanded: true,
                       hint: Row(
-                        children:  [
-
+                        children: [
                           Expanded(
                             child: Text(
                               AppTexts.chooseState.tr,
@@ -51,22 +48,21 @@ class FilterScreen extends GetView<FilterController> {
                       ),
                       items: controller.estateTypes
                           .map((item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(
-                          item.tr,
-                          style:  TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ))
+                                value: item,
+                                child: Text(
+                                  item.tr,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                           .toList(),
                       value: controller.selectedValue,
                       onChanged: (value) {
-                        setState(()=>
-                        controller.selectedValue=value);
+                        setState(() => controller.selectedValue = value);
                       },
                       icon: const Icon(
                         Icons.arrow_drop_down,
@@ -82,17 +78,18 @@ class FilterScreen extends GetView<FilterController> {
                         border: Border.all(
                           color: Colors.black26,
                         ),
-                        color:AppColors.primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                       buttonElevation: 2,
                       itemHeight: 40,
                       itemPadding: const EdgeInsets.only(left: 14, right: 14),
                       dropdownMaxHeight: 200,
                       dropdownWidth: 200.w,
-                      dropdownPadding: EdgeInsets.only(left: 14, right: 14),
+                      dropdownPadding:
+                          const EdgeInsets.only(left: 14, right: 14),
                       dropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color:AppColors.primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                       dropdownElevation: 8,
                       scrollbarRadius: const Radius.circular(40),
@@ -106,15 +103,15 @@ class FilterScreen extends GetView<FilterController> {
               SizedBox(
                 height: AppSizes.height26.h,
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState)=> DropdownButtonHideUnderline(
+                  builder: (BuildContext context, StateSetter setState) =>
+                      DropdownButtonHideUnderline(
                     child: DropdownButton2(
                       isExpanded: true,
                       hint: Row(
-                        children:  [
-
+                        children: [
                           Expanded(
                             child: Text(
                               AppTexts.chooseCity.tr,
@@ -126,22 +123,21 @@ class FilterScreen extends GetView<FilterController> {
                       ),
                       items: controller.estateTypes
                           .map((item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(
-                          item.tr,
-                          style:  TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ))
+                                value: item,
+                                child: Text(
+                                  item.tr,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                           .toList(),
                       value: controller.selectedValue1,
                       onChanged: (value) {
-                        setState(()=>
-                        controller.selectedValue1=value);
+                        setState(() => controller.selectedValue1 = value);
                       },
                       icon: const Icon(
                         Icons.arrow_drop_down,
@@ -151,23 +147,26 @@ class FilterScreen extends GetView<FilterController> {
                       iconDisabledColor: Colors.grey,
                       buttonHeight: 50,
                       buttonWidth: 160,
-                      buttonPadding:  EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      buttonPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       buttonDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
                           color: Colors.black26,
                         ),
-                        color:AppColors.primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                       buttonElevation: 2,
                       itemHeight: 40,
-                      itemPadding: EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      itemPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       dropdownMaxHeight: 200,
                       dropdownWidth: 200,
-                      dropdownPadding: EdgeInsets.symmetric(horizontal: AppSizes.padding20),
+                      dropdownPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSizes.padding20),
                       dropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color:AppColors.primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                       dropdownElevation: 8,
                       scrollbarRadius: const Radius.circular(40),
@@ -181,223 +180,223 @@ class FilterScreen extends GetView<FilterController> {
               SizedBox(
                 height: AppSizes.height26.h,
               ),
-
-              Text(AppTexts.estateType.tr,
+              Text(
+                AppTexts.estateType.tr,
                 style: context.theme.textTheme.headline6,
               ),
-              SizedBox(height:AppSizes.padding20.w ,),
-              Container(
-
-                child: Card(
-                  child: GridView.count(
-
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: EdgeInsets.all(10),
-                      crossAxisCount: 3,
-                      children:
-                      List.generate(AppTexts.estateTypes.length, (index) =>  Card(
-
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                         Icon(
-                           Icons.villa,
-                           color: AppColors.primaryColor,
-                           size: 24,
-                         ),
-                            Text(AppTexts.estateTypes[index].tr,
-                              style: context.theme.textTheme.headline3,
-                            ),
-                          ],
-                        ),
-                      ))
-
-                  ),
-                ),
-              ),
               SizedBox(
-                height: AppSizes.height26.h,
+                height: AppSizes.padding20.w,
               ),
-
-              Text(AppTexts.estateCost.tr,
-                style: context.theme.textTheme.headline6,
-              ),
-              Container(
-                child: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState)=> SfRangeSlider(
-                    min: controller.min,
-                    max: controller.max,
-                    values: controller.values1,
-                    interval: 20,
-                    showLabels: true,
-                    activeColor: AppColors.primaryColor,
-                    inactiveColor: AppColors.primaryColor.withOpacity(.3),
-                    onChanged: (SfRangeValues value) {
-                      setState(()=>
-                      controller.values1=value);
-
-
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppSizes.height26.h,
-              ),
-
-              Text(AppTexts.estateArea.tr,
-                style: context.theme.textTheme.headline6,
-              ),
-              Container(
-                child: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState)=> SfRangeSlider(
-                    min: controller.min,
-                    max: controller.max,
-                    values: controller.values2,
-                    interval: 20,
-                    showLabels: true,
-                    activeColor: AppColors.primaryColor,
-                    inactiveColor: AppColors.primaryColor.withOpacity(.3),
-                    onChanged: (SfRangeValues value) {
-                      setState(()=>
-                      controller.values2=value);
-
-
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppSizes.height26.h,
-              ),
-
-              Text(AppTexts.builtUpArea.tr,
-                style: context.theme.textTheme.headline6,
-              ),
-              Container(
-                child: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState)=> SfRangeSlider(
-                    min: controller.min,
-                    max: controller.max,
-                    values: controller.values3,
-                    interval: 20,
-                    showLabels: true,
-                    activeColor: AppColors.primaryColor,
-                    inactiveColor: AppColors.primaryColor.withOpacity(.3),
-                    onChanged: (SfRangeValues value) {
-                      setState(()=>
-                      controller.values3=value);
-
-
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppSizes.height26.h,
-              ),
-
-              Container(
-
-                child: ListView.separated(
+              Card(
+                child: GridView.count(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemBuilder: (context, index) =>   Card(
-                  child: Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: AppSizes.padding20.w,vertical: AppSizes.height10.h),
-                    child: Row(
-                      children: [
-                        Text(controller.estateDetailes[index].tr,
-                          style: context.theme.textTheme.headline6,
-                        ),
-                        Spacer(),
-                        MaterialButton(onPressed: (){
-                          controller.increments[index]();
-                        },
-                          padding: EdgeInsets.zero,
-                          minWidth: 40,
-                          height: 40,
-                          color: AppColors.primaryColor,
-                          child: Icon(Icons.add,color: Colors.white,size: 20,),
-
-                        ),
-
-
-                        Obx(
-                              () =>Padding(
-                            padding:  EdgeInsets.symmetric(horizontal: AppSizes.height10.w),
-                            child: Text('${controller.counts[index]}',
-                              style: context.theme.textTheme.headline6,
-                            ),
-                          ),),
-
-                        MaterialButton(onPressed: (){
-                          controller.decrements[index]();
-                        },
-                          padding: EdgeInsets.zero,
-                          minWidth: 40,
-                          height: 40,
-                          color: AppColors.primaryColor,
-                          child: Icon(Icons.remove,color: Colors.white,size: 20,),
-
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                    separatorBuilder: (context, index) =>  SizedBox(
-                      height: AppSizes.height10.h,
-                    ), itemCount:4 ),
+                    padding: const EdgeInsets.all(10),
+                    crossAxisCount: 3,
+                    children: List.generate(
+                        AppTexts.estateTypes.length,
+                        (index) => Card(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.villa,
+                                    color: AppColors.primaryColor,
+                                    size: 24,
+                                  ),
+                                  Text(
+                                    AppTexts.estateTypes[index].tr,
+                                    style: context.theme.textTheme.headline3,
+                                  ),
+                                ],
+                              ),
+                            ))),
               ),
-
-
               SizedBox(
                 height: AppSizes.height26.h,
               ),
-
+              Text(
+                AppTexts.estateCost.tr,
+                style: context.theme.textTheme.headline6,
+              ),
+              StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) =>
+                    SfRangeSlider(
+                  min: controller.min,
+                  max: controller.max,
+                  values: controller.values1,
+                  interval: 20,
+                  showLabels: true,
+                  activeColor: AppColors.primaryColor,
+                  inactiveColor: AppColors.primaryColor.withOpacity(.3),
+                  onChanged: (SfRangeValues value) {
+                    setState(() => controller.values1 = value);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: AppSizes.height26.h,
+              ),
+              Text(
+                AppTexts.estateArea.tr,
+                style: context.theme.textTheme.headline6,
+              ),
+              StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) =>
+                    SfRangeSlider(
+                  min: controller.min,
+                  max: controller.max,
+                  values: controller.values2,
+                  interval: 20,
+                  showLabels: true,
+                  activeColor: AppColors.primaryColor,
+                  inactiveColor: AppColors.primaryColor.withOpacity(.3),
+                  onChanged: (SfRangeValues value) {
+                    setState(() => controller.values2 = value);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: AppSizes.height26.h,
+              ),
+              Text(
+                AppTexts.builtUpArea.tr,
+                style: context.theme.textTheme.headline6,
+              ),
+              StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) =>
+                    SfRangeSlider(
+                  min: controller.min,
+                  max: controller.max,
+                  values: controller.values3,
+                  interval: 20,
+                  showLabels: true,
+                  activeColor: AppColors.primaryColor,
+                  inactiveColor: AppColors.primaryColor.withOpacity(.3),
+                  onChanged: (SfRangeValues value) {
+                    setState(() => controller.values3 = value);
+                  },
+                ),
+              ),
+              SizedBox(
+                height: AppSizes.height26.h,
+              ),
+              ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Card(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: AppSizes.padding20.w,
+                              vertical: AppSizes.height10.h),
+                          child: Row(
+                            children: [
+                              Text(
+                                controller.estateDetailes[index].tr,
+                                style: context.theme.textTheme.headline6,
+                              ),
+                              const Spacer(),
+                              MaterialButton(
+                                onPressed: () {
+                                  controller.increments[index]();
+                                },
+                                padding: EdgeInsets.zero,
+                                minWidth: 40,
+                                height: 40,
+                                color: AppColors.primaryColor,
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                              Obx(
+                                () => Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: AppSizes.height10.w),
+                                  child: Text(
+                                    '${controller.counts[index]}',
+                                    style: context.theme.textTheme.headline6,
+                                  ),
+                                ),
+                              ),
+                              MaterialButton(
+                                onPressed: () {
+                                  controller.decrements[index]();
+                                },
+                                padding: EdgeInsets.zero,
+                                minWidth: 40,
+                                height: 40,
+                                color: AppColors.primaryColor,
+                                child: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                  separatorBuilder: (context, index) => SizedBox(
+                        height: AppSizes.height10.h,
+                      ),
+                  itemCount: 4),
+              SizedBox(
+                height: AppSizes.height26.h,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppTexts.realEstateAgents.tr,
+                  Text(
+                    AppTexts.realEstateAgents.tr,
                     style: context.theme.textTheme.headline6,
                   ),
-                  IconButton(onPressed: (){
-                    Get.toNamed(AppRoutes.getagentsRout());
-                  }, icon: Icon(Icons.arrow_forward))
+                  IconButton(
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.getAgentsRout());
+                      },
+                      icon: const Icon(Icons.arrow_forward))
                 ],
               ),
               SizedBox(
                 height: AppSizes.height10.h,
               ),
-              Container(
+              SizedBox(
                 height: AppSizes.height189.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.all(AppSizes.height10),
-                 children: List.generate(7, (index) =>
-                Padding(
-                  padding: EdgeInsets.only(left:AppSizes.height10.w ),
-                  child: Column(
-                      children: [
-
-                        CircleAvatar(
-                          backgroundImage: ExactAssetImage(AppImages.userImage),
-                          radius: AppSizes.radius40,
-                        ),
-                        SizedBox(
-                          height: AppSizes.height10.h,
-                        ),
-                        Text(AppTexts.userName.tr,
-                          style: context.theme.textTheme.headline4,),
-                      ],
+                  physics: const BouncingScrollPhysics(),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: AppSizes.height10),
+                  children: List.generate(
+                    7,
+                    (index) => Padding(
+                      padding: EdgeInsets.only(left: AppSizes.height10.w),
+                      child: Column(
+                        children: [
+                          const CircleAvatar(
+                            backgroundImage:
+                                ExactAssetImage(AppImages.userImage),
+                            radius: AppSizes.radius40,
+                          ),
+                          SizedBox(
+                            height: AppSizes.height10.h,
+                          ),
+                          Text(
+                            AppTexts.userName.tr,
+                            style: context.theme.textTheme.headline4,
+                          ),
+                        ],
+                      ),
                     ),
-                ), ),
+                  ),
                 ),
               ),
-
-              DefaultButton(AppTexts.viewResults.tr, AppRoutes.getresultsRout()),
+              DefaultButton(
+                AppTexts.viewResults.tr,
+                AppRoutes.getResultsRout(),
+              ),
             ],
           ),
         ),

@@ -1,59 +1,49 @@
-import 'package:final_project/core/app_colors/app_colors.dart';
-import 'package:final_project/core/app_images/app_images.dart';
-import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
-import 'package:final_project/core/widgets/app_widgets.dart';
 import 'package:final_project/features/booking_feature/presentation/controllers/booking_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class BookingScreen extends GetView<BookingController> {
   const BookingScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar:   AppBar(
+        appBar: AppBar(
           title: Text(AppTexts.bookAppointment.tr),
           backgroundColor: context.theme.scaffoldBackgroundColor,
-
-
-      ),
-      body:SingleChildScrollView(
-        child: Padding(
-          padding:  EdgeInsets.all(AppSizes.padding20.h.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(AppTexts.selectAppointment,
-                style: context.theme.textTheme.headline6,
-              ),
-              Card(
-                child: DatePickerDialog(
-
-                    cancelText: '',
-confirmText: '',
-
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime.utc(2031)
-                ),
-              ),
-              Text(AppTexts.availableAppointment.tr,
-                style: context.theme.textTheme.headline6,
-              ),
-
-            ],
-          ),
         ),
-      )
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(AppSizes.padding20.h.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppTexts.selectAppointment,
+                  style: context.theme.textTheme.headline6,
+                ),
+                Card(
+                  child: DatePickerDialog(
+                      cancelText: '',
+                      confirmText: '',
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime.utc(2031)),
+                ),
+                Text(
+                  AppTexts.availableAppointment.tr,
+                  style: context.theme.textTheme.headline6,
+                ),
+              ],
+            ),
+          ),
+        )
 
-
-      /*Column(
+        /*Column(
         children: [
 
           Padding(
@@ -118,6 +108,6 @@ confirmText: '',
 
         ],
       ),*/
-    );
+        );
   }
 }

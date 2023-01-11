@@ -27,7 +27,7 @@ class AgentDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              const Center(
                 child: CircleAvatar(
                   radius: 81,
                   backgroundColor: AppColors.primaryColor,
@@ -39,7 +39,9 @@ class AgentDetailsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(child: Text(AppTexts.userName.tr, style: context.theme.textTheme.headline1)),
+              Center(
+                  child: Text(AppTexts.userName.tr,
+                      style: context.theme.textTheme.headline1)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -78,7 +80,7 @@ class AgentDetailsScreen extends StatelessWidget {
                               style: context.theme.textTheme.headline1
                                   ?.copyWith(fontSize: 18.sp)),
                           Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.star,
                                 color: Colors.yellow,
@@ -118,13 +120,13 @@ class AgentDetailsScreen extends StatelessWidget {
               ListView.builder(
                 itemCount: 7,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => EstateCard(
                   homeEntity: HomeEntity(
                     image: AppImages.houses[index],
                     area: '200 م2',
-                    bathrooms: AppTexts.bath.tr+""+"2",
-                    bedrooms:  AppTexts.bedroom.tr+""+"2",
+                    bathrooms: "${AppTexts.bath.tr}2",
+                    bedrooms: "${AppTexts.bedroom.tr}2",
                     location: AppTexts.palestine.tr,
                     subLocation1: AppTexts.gaza.tr,
                     subLocation2: AppTexts.region.tr,
@@ -132,13 +134,16 @@ class AgentDetailsScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(vertical: AppSizes.padding20.h),
+                padding: EdgeInsets.symmetric(vertical: AppSizes.padding20.h),
                 child: MaterialButton(
                   color: AppColors.primaryColor,
-                  onPressed: (){
-                    Get.toNamed(AppRoutes.getchatRout());
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.getChatRout());
                   },
-                  child: Text(AppTexts.startChatting.tr,style: context.theme.textTheme.headline2,),
+                  child: Text(
+                    AppTexts.startChatting.tr,
+                    style: context.theme.textTheme.headline2,
+                  ),
                 ),
               )
             ],

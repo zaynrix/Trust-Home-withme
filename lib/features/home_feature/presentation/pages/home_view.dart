@@ -16,6 +16,8 @@ import 'package:get/get.dart';
 import '../widgets/estate_card_widget.dart';
 
 class HomeScreen extends GetView<HomeController> {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,7 +25,6 @@ class HomeScreen extends GetView<HomeController> {
         padding: EdgeInsets.all(AppSizes.padding20.h.w),
         child: GetBuilder<HomeController>(
           builder: (controller) => SingleChildScrollView(
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,15 +33,15 @@ class HomeScreen extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () => Get.toNamed(AppRoutes.getprofileRout()),
-                      child: CircleAvatar(
+                      onTap: () => Get.toNamed(AppRoutes.getProfileRout()),
+                      child: const CircleAvatar(
                         backgroundImage: ExactAssetImage(AppImages.userImage),
                         radius: 25,
                       ),
                     ),
                     IconButton(
                         onPressed: () {
-                          Get.toNamed(AppRoutes.getnotificationRout());
+                          Get.toNamed(AppRoutes.getNotificationRout());
                         },
                         icon: Icon(
                           Icons.notifications_none,
@@ -59,12 +60,12 @@ class HomeScreen extends GetView<HomeController> {
                 SizedBox(
                   height: AppSizes.height10.h,
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 120,
                         height: 50,
                         child: Card(
@@ -76,7 +77,7 @@ class HomeScreen extends GetView<HomeController> {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 120,
                         height: 50,
                         child: Card(
@@ -94,7 +95,7 @@ class HomeScreen extends GetView<HomeController> {
                 SizedBox(
                   height: AppSizes.padding20.h,
                 ),
-                Container(
+                SizedBox(
                   height: AppSizes.height57,
                   child: DefaultTextForm(
                     textEditingController: controller.searchController,
@@ -105,7 +106,7 @@ class HomeScreen extends GetView<HomeController> {
                       padding:
                           EdgeInsets.symmetric(horizontal: AppSizes.height10.w),
                       child: InkWell(
-                          onTap: () => Get.toNamed(AppRoutes.getfilterRout()),
+                          onTap: () => Get.toNamed(AppRoutes.getFilterRout()),
                           child: SvgPicture.asset(
                             AppImages.filterIcon,
                             height: 20,
@@ -123,7 +124,10 @@ class HomeScreen extends GetView<HomeController> {
                   children: [
                     Text(
                       AppTexts.exploreSentance.tr,
-                      style: context.theme.textTheme.bodyText1,
+                      style: context.theme.textTheme.bodyText1!.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     Card(
                       child: Row(
@@ -158,25 +162,22 @@ class HomeScreen extends GetView<HomeController> {
                 SizedBox(
                   height: AppSizes.height10.h,
                 ),
-                Container(
+                SizedBox(
                   height: AppSizes.height478,
-                  child: Expanded(
-                    child: ListView.builder(
-
-                      itemBuilder: (context, index) => EstateCard(
-                        homeEntity: HomeEntity(
-                          image: AppImages.houses[index],
-                          area: '200 م2'.tr,
-                          bathrooms: AppTexts.bath.tr+""+"2",
-                          bedrooms:  AppTexts.bedroom.tr+""+"2",
-                          location: AppTexts.palestine.tr,
-                          subLocation1: AppTexts.gaza.tr,
-                          subLocation2: AppTexts.region.tr,
-                        ),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => EstateCard(
+                      homeEntity: HomeEntity(
+                        image: AppImages.houses[index],
+                        area: '200 م2'.tr,
+                        bathrooms: AppTexts.bath.tr + "" + "2",
+                        bedrooms: AppTexts.bedroom.tr + "" + "2",
+                        location: AppTexts.palestine.tr,
+                        subLocation1: AppTexts.gaza.tr,
+                        subLocation2: AppTexts.region.tr,
                       ),
-                      shrinkWrap: true,
-                      itemCount: AppImages.houses.length,
                     ),
+                    shrinkWrap: true,
+                    itemCount: AppImages.houses.length,
                   ),
                 ),
               ],

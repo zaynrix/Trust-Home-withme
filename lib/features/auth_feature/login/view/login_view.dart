@@ -12,124 +12,122 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SignInScreen extends StatelessWidget {
-var formKey=GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
+
+  SignInScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AuthLayout(
-  SafeArea(
-        top: true,
-        child: Padding(
-          padding:  EdgeInsets.all(AppSizes.padding20.w.h),
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Container(
-                      width: double.infinity,
-                      height: AppSizes.height189.h,
-                      child: Image.asset(
-                        AppImages.signImage,
-                        fit: BoxFit.cover,
-                      )),
-                  SizedBox(
-                    height: AppSizes.height40,
-                  ),
-
-                  DefaultTextForm(
-                      textEditingController: TextEditingController(),
-                      textInputType: TextInputType.phone,
-                      validator: (String? value) {
-                        if (value!.isEmpty) {
-                          return AppTexts.pleaseEnterPhone.tr;
-                        }
-                      },
-                      label: AppTexts.phoneNumber.tr,
-                      hasPrefixIcon: true,
-                      iconData: Image.asset(
-                        AppImages.phoneIcon,
-                        color: AppColors.headLine3Color,
-                        height: AppSizes.height10.h,
-                        width: AppSizes.height10.w,
-                      )),
-                  SizedBox(
-                    height: AppSizes.height20.h,
-                  ),
-                  DefaultTextForm(
-                      textEditingController: TextEditingController(),
-                      textInputType: TextInputType.visiblePassword,
-                      validator: ((value) {
-                        if (value!.isEmpty)
-                        return AppTexts.pleaseEnterPas.tr;
-                      }),
-                      label: AppTexts.password.tr,
-                      isPassword: true,
-                      iconData: Container(
+        SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsets.all(AppSizes.padding20.w.h),
+            child: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Container(
+                        width: double.infinity,
+                        height: AppSizes.height189.h,
+                        child: Image.asset(
+                          AppImages.signImage,
+                          fit: BoxFit.cover,
+                        )),
+                    const SizedBox(
+                      height: AppSizes.height40,
+                    ),
+                    DefaultTextForm(
+                        textEditingController: TextEditingController(),
+                        textInputType: TextInputType.phone,
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return AppTexts.pleaseEnterPhone.tr;
+                          }
+                        },
+                        label: AppTexts.phoneNumber.tr,
+                        hasPrefixIcon: true,
+                        iconData: Image.asset(
+                          AppImages.phoneIcon,
+                          color: AppColors.headLine3Color,
                           height: AppSizes.height10.h,
                           width: AppSizes.height10.w,
-                          child: Image.asset(AppImages.lockIcon))),
-                  SizedBox(
-                    height: AppSizes.height20.h,
-                  ),
-                  Row(
-                    children: [
-                      Spacer(),
-                   InkWell(
-                     onTap: ()=>Get.toNamed(AppRoutes.getonforgetPassRout()),
-                     child: Text(AppTexts.forgetPassword.tr+'؟',
-                     style: context.theme.textTheme.headline4,
-                     ),
-                   )
-                     ],
-                  ),
-                   SizedBox(
-                     height: AppSizes.height20.h,
-                  ),
-                  MaterialButton(
-                    color: AppColors.primaryColor,
-                      child:Text(AppTexts.signIn.tr,style: context.theme.textTheme.headline2,),
-
-             onPressed: () {
-                        if(formKey.currentState!.validate()){
-                          Get.offAndToNamed( AppRoutes.getlayoutRout());
-                        }
-             },
-                  ),
-                  SizedBox(
-                    height: AppSizes.height20.h,
-                  ),
-                 InkWell(
-                   onTap: () {
-
-                     Get.toNamed(AppRoutes.getonsignUpRout());
-
-                   },
-                   child: RichText(
-                     text: TextSpan(
-                       text: AppTexts.dontHaveAccount.tr,
-                       style: context.theme.textTheme.headline5?.copyWith(
-                         color: AppColors.headLine4Color
-                       ),
-                       children: [
-                         TextSpan(text: ' '),
-                        TextSpan(
-                          text: AppTexts.createAccount.tr,
-style: context.theme.textTheme.headline5?.copyWith(
-  color: AppColors.primaryColor
-)
+                        )),
+                    SizedBox(
+                      height: AppSizes.height20.h,
+                    ),
+                    DefaultTextForm(
+                        textEditingController: TextEditingController(),
+                        textInputType: TextInputType.visiblePassword,
+                        validator: ((value) {
+                          if (value!.isEmpty) return AppTexts.pleaseEnterPas.tr;
+                          // return '';
+                        }),
+                        label: AppTexts.password.tr,
+                        isPassword: true,
+                        iconData: SizedBox(
+                            height: AppSizes.height10.h,
+                            width: AppSizes.height10.w,
+                            child: Image.asset(AppImages.lockIcon))),
+                    SizedBox(
+                      height: AppSizes.height20.h,
+                    ),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        InkWell(
+                          onTap: () =>
+                              Get.toNamed(AppRoutes.getForgetPassRout()),
+                          child: Text(
+                            '${AppTexts.forgetPassword.tr}؟',
+                            style: context.theme.textTheme.headline4,
+                          ),
                         )
-
-                       ]
-                     ),
-                   ),
-                 )
-                ],
+                      ],
+                    ),
+                    SizedBox(
+                      height: AppSizes.height20.h,
+                    ),
+                    MaterialButton(
+                      color: AppColors.primaryColor,
+                      child: Text(
+                        AppTexts.signIn.tr,
+                        style: context.theme.textTheme.headline2,
+                      ),
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          Get.offAndToNamed(AppRoutes.getLayoutRout());
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: AppSizes.height20.h,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.getSignUpRout());
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                            text: AppTexts.dontHaveAccount.tr,
+                            style: context.theme.textTheme.headline5
+                                ?.copyWith(color: AppColors.headLine4Color),
+                            children: [
+                              const TextSpan(text: ' '),
+                              TextSpan(
+                                  text: AppTexts.createAccount.tr,
+                                  style: context.theme.textTheme.headline5
+                                      ?.copyWith(color: AppColors.primaryColor))
+                            ]),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
-      AppTexts.signIn
-    );
+        AppTexts.signIn);
   }
 }

@@ -18,24 +18,30 @@ class NotificationScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppTexts.notifications.tr),
         backgroundColor: context.theme.scaffoldBackgroundColor,
-
-
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding:  EdgeInsets.all(AppSizes.padding20.h.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(AppImages.emptyCart),
-                SizedBox(height: AppSizes.padding20.h,),
-
-                Text(AppTexts.emptyNotification.tr,style: context.theme.textTheme.headline3,),
-                SizedBox(height: AppSizes.padding20.h,),
-                DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
-              ],
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(AppSizes.padding20.h.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(AppImages.emptyCart),
+                  SizedBox(
+                    height: AppSizes.padding20.h,
+                  ),
+                  Text(
+                    AppTexts.emptyNotification.tr,
+                    style: context.theme.textTheme.headline3,
+                  ),
+                  SizedBox(
+                    height: AppSizes.padding20.h,
+                  ),
+                  DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
+                ],
+              ),
             ),
           ),
         ),

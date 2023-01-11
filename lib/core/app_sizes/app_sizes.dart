@@ -14,6 +14,7 @@ static const double height40=40;
 static const double height20=20;
 static const double height10=10;
 static const double padding25=25;
+static const double padding16=16;
 static const double padding20=20;
 static const double height26=26;
 static const double height74=74;

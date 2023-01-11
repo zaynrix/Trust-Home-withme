@@ -12,47 +12,53 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppBar(
-            title: Text(AppTexts.favorite.tr),
-            backgroundColor: context.theme.scaffoldBackgroundColor,
-            leading: IconButton(
-              onPressed: () {
-                Get.toNamed(AppRoutes.getLayoutRout());
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-              ),
-            )),
-        Padding(
-          padding: EdgeInsets.all(AppSizes.padding20.h.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                AppImages.emptyCart,
-              ),
-              SizedBox(
-                height: AppSizes.padding20.h,
-              ),
-              Text(AppTexts.emptyCart.tr,
-                  style: context.theme.textTheme.headline3),
-              SizedBox(
-                height: AppSizes.height10.h,
-              ),
-              Text(AppTexts.emptyCartDes.tr,
-                  style: context.theme.textTheme.headline3,
-                  textAlign: TextAlign.center),
-              SizedBox(
-                height: AppSizes.padding20.h,
-              ),
-              DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(AppTexts.favorite.tr),
+          backgroundColor: context.theme.scaffoldBackgroundColor,
+          leading: IconButton(
+            onPressed: () {
+              Get.toNamed(AppRoutes.getLayoutRout());
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
+          )),
+      body: Padding(
+        padding: EdgeInsets.all(AppSizes.padding20.h.w),
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  AppImages.emptyCart,
+                ),
+                SizedBox(
+                  height: AppSizes.padding20.h,
+                ),
+                Text(AppTexts.emptyCart.tr,
+                    style: context.theme.textTheme.headline3),
+                SizedBox(
+                  height: AppSizes.height10.h,
+                ),
+                Text(AppTexts.emptyCartDes.tr,
+                    style: context.theme.textTheme.headline3,
+                    textAlign: TextAlign.center),
+                SizedBox(
+                  height: AppSizes.padding20.h,
+                ),
+                DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
+                SizedBox(
+                  height: AppSizes.padding20.h,
+                ),
+              ],
+            ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

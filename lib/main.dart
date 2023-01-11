@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'core/app_network/cache_helper.dart';
 import 'core/app_sizes/app_sizes.dart';
 import 'core/local/local.dart';
-import 'features/home_feature/presentation/controllers/home_controller.dart';
 import 'features/settings_feature/presentation/controllers/setting_controller.dart';
 
 void main() async {
@@ -34,8 +33,8 @@ class MainApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               //textDirection: TextDirection.rtl,
               getPages: AppRoutes().routes,
-              // initialRoute: AppRoutes.getSplashRout(),
-              initialRoute: AppRoutes.createPass,
+              initialRoute: AppRoutes.getSplashRout(),
+              // initialRoute: AppRoutes.createPass,
             ));
   }
 }

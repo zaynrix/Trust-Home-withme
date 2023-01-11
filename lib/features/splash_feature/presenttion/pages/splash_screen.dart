@@ -13,28 +13,32 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 5), (){
+    Future.delayed(const Duration(seconds: 3), () {
       Get.offAllNamed(AppRoutes.getOnBoardingRout());
     });
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: SvgPicture.asset(AppImages.logo,color: AppColors.primaryColor),),
+          Center(
+            child:
+                SvgPicture.asset(AppImages.logo, color: AppColors.primaryColor),
+          ),
           Padding(
-            padding:  EdgeInsets.zero,
-            child: Center(child: Text('TRUST STATE',
-            style: context.theme.textTheme.headline1?.copyWith(
-
-              color: AppColors.primaryColor,
-              fontSize: 36,
-            ),
+            padding: EdgeInsets.zero,
+            child: Center(
+                child: Text(
+              'trust state'.toUpperCase(),
+              style: context.theme.textTheme.headline1?.copyWith(
+                color: AppColors.primaryColor,
+                fontSize: 36,
+              ),
             )),
           ),
-          Center(child: Text('FIND YOUR DREAM PROPERTY, TODAY',
-          style: context.theme.textTheme.headline3?.copyWith(
-            fontSize: 13.sp
-          ),
+          Center(
+              child: Text(
+            'FIND YOUR DREAM PROPERTY, TODAY',
+            style: context.theme.textTheme.headline3?.copyWith(fontSize: 13.sp),
           )),
         ],
       ),

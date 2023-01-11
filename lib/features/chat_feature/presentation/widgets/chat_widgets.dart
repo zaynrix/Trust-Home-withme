@@ -18,9 +18,9 @@ class ChatWidgets {
         margin: EdgeInsets.all(AppSizes.height10.h.w),
         child: ListTile(
           onTap: onTap,
-          contentPadding:EdgeInsets.all(AppSizes.height10/2.h.w),
-          leading:  Padding(
-            padding: EdgeInsets.all(AppSizes.height10/2.h.w),
+          contentPadding: EdgeInsets.all(AppSizes.height10 / 2.h.w),
+          leading: Padding(
+            padding: EdgeInsets.all(AppSizes.height10 / 2.h.w),
             child: CircleAvatar(
                 backgroundColor: Colors.grey,
                 child: Icon(
@@ -29,11 +29,17 @@ class ChatWidgets {
                   color: Colors.white,
                 )),
           ),
-          title: Text(title,style: AppThemes.lightTheme.textTheme.headline5,),
-          subtitle:subtitle !=null? Text(subtitle): null,
+          title: Text(
+            title,
+            style: AppThemes.lightTheme.textTheme.headline5,
+          ),
+          subtitle: subtitle != null ? Text(subtitle) : null,
           trailing: Padding(
-            padding:  EdgeInsets.all( AppSizes.height10.w),
-            child: Text(time,style: AppThemes.lightTheme.textTheme.headline3,),
+            padding: EdgeInsets.all(AppSizes.height10.w),
+            child: Text(
+              time,
+              style: AppThemes.lightTheme.textTheme.headline3,
+            ),
           ),
         ),
       ),
@@ -57,7 +63,15 @@ class ChatWidgets {
                 color: Colors.white,
               ),
             ),
-            SizedBox(width: 50,child: Center(child: Text('John',style: TextStyle(height: 1.5,fontSize: 12,color: Colors.white),overflow: TextOverflow.ellipsis,)))
+            SizedBox(
+                width: 50,
+                child: Center(
+                    child: Text(
+                  'John',
+                  style:
+                      TextStyle(height: 1.5, fontSize: 12, color: Colors.white),
+                  overflow: TextOverflow.ellipsis,
+                )))
           ],
         ),
       ),
@@ -74,35 +88,35 @@ class ChatWidgets {
           if (check) const Spacer(),
           if (!check)
             const CircleAvatar(
+              backgroundColor: Colors.grey,
+              radius: 10,
               child: Icon(
                 Icons.person,
                 size: 13,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.grey,
-              radius: 10,
             ),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 250),
             child: Container(
               margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(10),
+              decoration: Styles.messagesCardStyle(check),
               child: Text(
                 '$message\n\n$time',
                 style: TextStyle(color: check ? Colors.white : Colors.black),
               ),
-              decoration: Styles.messagesCardStyle(check),
             ),
           ),
           if (check)
             const CircleAvatar(
+              backgroundColor: Colors.grey,
+              radius: 10,
               child: Icon(
                 Icons.person,
                 size: 13,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.grey,
-              radius: 10,
             ),
           if (!check) const Spacer(),
         ],
@@ -114,40 +128,38 @@ class ChatWidgets {
     final con = TextEditingController();
     return Container(
       margin: const EdgeInsets.all(5),
+      decoration: Styles.messageFieldCardStyle(),
       child: TextField(
         controller: con,
         decoration: Styles.messageTextFieldStyle(onSubmit: () {
           onSubmit(con);
         }),
       ),
-      decoration: Styles.messageFieldCardStyle(),
     );
   }
 
-
-  static searchBar(bool open, ) {
+  static searchBar(
+    bool open,
+  ) {
     return AnimatedDialog(
       height: open ? 800 : 0,
       width: open ? 400 : 0,
-
     );
   }
 
   static searchField({onSubmit}) {
     final con = TextEditingController();
     return Container(
-
       margin: const EdgeInsets.all(10),
+      decoration: Styles.messageFieldCardStyle(),
       child: TextField(
         controller: con,
-        decoration: Styles.searchTextFieldStyle(
-
-        ),
+        decoration: Styles.searchTextFieldStyle(),
       ),
-      decoration: Styles.messageFieldCardStyle(),
     );
   }
 }
+
 class AnimatedDialog extends StatefulWidget {
   final double height;
   final double width;
@@ -161,15 +173,16 @@ class AnimatedDialog extends StatefulWidget {
 
 class _AnimatedDialogState extends State<AnimatedDialog> {
   bool show = false;
+
   @override
   Widget build(BuildContext context) {
-    if(widget.height != 0){
+    if (widget.height != 0) {
       Timer(const Duration(milliseconds: 200), () {
         setState(() {
           show = true;
         });
       });
-    }else{
+    } else {
       setState(() {
         show = false;
       });
@@ -183,42 +196,49 @@ class _AnimatedDialogState extends State<AnimatedDialog> {
           height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(
-              color:widget.width == 0 ? Colors.grey.withOpacity(0.6):  Colors.grey.shade50,
+              color: widget.width == 0
+                  ? Colors.grey.withOpacity(0.6)
+                  : Colors.grey.shade50,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(widget.width == 0 ? 100 : 0),
                 bottomRight: Radius.circular(widget.width == 0 ? 100 : 0),
                 bottomLeft: Radius.circular(widget.width == 0 ? 100 : 0),
               )),
-          child: widget.width == 0 ? null : !show ? null :  Column(
-            children: [
-              ChatWidgets.searchField(),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                    itemCount: 2,
-                    itemBuilder: (context, i) {
-                      return ChatWidgets.card(
-                        title: 'John Doe',
-                        time: '04:40',
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const ChatScreen(
-                                  id: '',
+          child: widget.width == 0
+              ? null
+              : !show
+                  ? null
+                  : Column(
+                      children: [
+                        ChatWidgets.searchField(),
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: ListView.builder(
+                              itemCount: 2,
+                              itemBuilder: (context, i) {
+                                return ChatWidgets.card(
+                                  title: 'John Doe',
+                                  time: '04:40',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return const ChatScreen(
+                                            id: '',
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
                                 );
                               },
                             ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ],
-          ),
+                          ),
+                        ),
+                      ],
+                    ),
         ),
       ],
     );

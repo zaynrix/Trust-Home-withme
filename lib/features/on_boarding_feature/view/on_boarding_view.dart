@@ -31,19 +31,20 @@ class OnBoardingScreen extends StatelessWidget {
         builder: ((onboardingcontroller) => Scaffold(
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.all(AppSizes.padding20.w.h),
+                  padding: EdgeInsets.all(AppSizes.padding16.w.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height * .50,
+                        height: MediaQuery.of(context).size.height * .59,
                         child: PageView.builder(
                           itemBuilder: (context, index) => Column(
                             children: [
                               Image.asset(
                                 onboardingcontroller.onboardImages[index],
-                                height: 335,
+                                height:
+                                    MediaQuery.of(context).size.height * .35,
                                 width: 335,
                               ),
                               Text(

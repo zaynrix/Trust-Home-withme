@@ -13,174 +13,178 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../auth_feature/create_new_pass/view/create_new_pass_view.dart';
 import '../widgets/estate_card_widget.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(AppSizes.padding20.h.w),
-        child: GetBuilder<HomeController>(
-          builder: (controller) => SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () => Get.toNamed(AppRoutes.getProfileRout()),
-                      child: const CircleAvatar(
-                        backgroundImage: ExactAssetImage(AppImages.userImage),
-                        radius: 25,
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          Get.toNamed(AppRoutes.getNotificationRout());
-                        },
-                        icon: Icon(
-                          Icons.notifications_none,
-                          size: AppSizes.height20 + 10,
-                          color: AppColors.iconsColor,
-                        ))
-                  ],
-                ),
-                SizedBox(
-                  height: AppSizes.height26.h,
-                ),
-                Text(
-                  AppTexts.searchSentance.tr,
-                  style: context.theme.textTheme.bodyText1,
-                ),
-                SizedBox(
-                  height: AppSizes.height10.h,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+    Get.lazyPut(() => HomeController());
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(AppSizes.padding20.h.w),
+          child: GetBuilder<HomeController>(
+            builder: (controller) => SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 120,
-                        height: 50,
-                        child: Card(
-                          child: Center(
-                            child: Text(
-                              AppTexts.buy.tr,
-                              style: context.theme.textTheme.headline3,
+                      InkWell(
+                        onTap: () => Get.toNamed(AppRoutes.getProfileRout()),
+                        child: const CircleAvatar(
+                          backgroundImage: ExactAssetImage(AppImages.userImage),
+                          radius: 25,
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Get.toNamed(AppRoutes.getNotificationRout());
+                          },
+                          icon: const Icon(
+                            Icons.notifications_none,
+                            size: AppSizes.height20 + 10,
+                            color: AppColors.iconsColor,
+                          ))
+                    ],
+                  ),
+                  SizedBox(
+                    height: AppSizes.height26.h,
+                  ),
+                  Text(
+                    AppTexts.searchSentance.tr,
+                    style: context.theme.textTheme.bodyText1,
+                  ),
+                  SizedBox(
+                    height: AppSizes.height10.h,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 120,
+                          height: 50,
+                          child: Card(
+                            child: Center(
+                              child: Text(
+                                AppTexts.buy.tr,
+                                style: context.theme.textTheme.headline3,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 120,
-                        height: 50,
-                        child: Card(
-                          child: Center(
-                            child: Text(
-                              AppTexts.rent.tr,
-                              style: context.theme.textTheme.headline3,
+                        SizedBox(
+                          width: 120,
+                          height: 50,
+                          child: Card(
+                            child: Center(
+                              child: Text(
+                                AppTexts.rent.tr,
+                                style: context.theme.textTheme.headline3,
+                              ),
                             ),
                           ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppSizes.padding20.h,
+                  ),
+                  SizedBox(
+                    height: AppSizes.height57,
+                    child: DefaultTextForm(
+                      textEditingController: controller.searchController,
+                      textInputType: TextInputType.text,
+                      validator: (value) => '',
+                      label: AppTexts.searchLabel.tr,
+                      iconDataSuffixx: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: AppSizes.height10.w),
+                        child: InkWell(
+                            onTap: () => Get.toNamed(AppRoutes.getFilterRout()),
+                            child: SvgPicture.asset(
+                              AppImages.filterIcon,
+                              height: 20,
+                              width: 20,
+                              color: AppColors.iconsColor,
+                            )),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppSizes.height26.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        AppTexts.exploreSentance.tr,
+                        style: context.theme.textTheme.bodyText1?.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Card(
+                        child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  controller.changeView1();
+                                  print(controller.changeView1Bool);
+                                },
+                                icon: SvgPicture.asset(
+                                  AppImages.verticalMenu,
+                                  color: controller.changeView1Bool
+                                      ? AppColors.headLine3Color
+                                      : AppColors.primaryColor,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  controller.changeView2();
+                                  print(controller.changeView2Bool);
+                                },
+                                icon: SvgPicture.asset(
+                                  AppImages.horizontalMenu,
+                                  color: controller.changeView2Bool
+                                      ? AppColors.headLine3Color
+                                      : AppColors.primaryColor,
+                                ))
+                          ],
                         ),
                       )
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: AppSizes.padding20.h,
-                ),
-                SizedBox(
-                  height: AppSizes.height57,
-                  child: DefaultTextForm(
-                    textEditingController: controller.searchController,
-                    textInputType: TextInputType.text,
-                    validator: (value) => '',
-                    label: AppTexts.searchLabel.tr,
-                    iconDataSuffixx: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: AppSizes.height10.w),
-                      child: InkWell(
-                          onTap: () => Get.toNamed(AppRoutes.getFilterRout()),
-                          child: SvgPicture.asset(
-                            AppImages.filterIcon,
-                            height: 20,
-                            width: 20,
-                            color: AppColors.iconsColor,
-                          )),
+                  SizedBox(
+                    height: AppSizes.height10.h,
+                  ),
+                  SizedBox(
+                    height: AppSizes.height478,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) => EstateCard(
+                        homeEntity: HomeEntity(
+                          image: AppImages.houses[index],
+                          area: '200 م2'.tr,
+                          bathrooms: AppTexts.bath.tr + "" + "2",
+                          bedrooms: AppTexts.bedroom.tr + "" + "2",
+                          location: AppTexts.palestine.tr,
+                          subLocation1: AppTexts.gaza.tr,
+                          subLocation2: AppTexts.region.tr,
+                        ),
+                      ),
+                      shrinkWrap: true,
+                      itemCount: AppImages.houses.length,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: AppSizes.height26.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      AppTexts.exploreSentance.tr,
-                      style: context.theme.textTheme.bodyText1!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Card(
-                      child: Row(
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                controller.changeView1();
-                                print(controller.changeView1Bool);
-                              },
-                              icon: SvgPicture.asset(
-                                AppImages.verticalMenu,
-                                color: controller.changeView1Bool
-                                    ? AppColors.headLine3Color
-                                    : AppColors.primaryColor,
-                              )),
-                          IconButton(
-                              onPressed: () {
-                                controller.changeView2();
-                                print(controller.changeView2Bool);
-                              },
-                              icon: SvgPicture.asset(
-                                AppImages.horizontalMenu,
-                                color: controller.changeView2Bool
-                                    ? AppColors.headLine3Color
-                                    : AppColors.primaryColor,
-                              ))
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: AppSizes.height10.h,
-                ),
-                SizedBox(
-                  height: AppSizes.height478,
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => EstateCard(
-                      homeEntity: HomeEntity(
-                        image: AppImages.houses[index],
-                        area: '200 م2'.tr,
-                        bathrooms: AppTexts.bath.tr + "" + "2",
-                        bedrooms: AppTexts.bedroom.tr + "" + "2",
-                        location: AppTexts.palestine.tr,
-                        subLocation1: AppTexts.gaza.tr,
-                        subLocation2: AppTexts.region.tr,
-                      ),
-                    ),
-                    shrinkWrap: true,
-                    itemCount: AppImages.houses.length,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

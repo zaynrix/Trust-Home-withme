@@ -34,7 +34,7 @@ debugShowCheckedModeBanner: false,
 theme: AppThemes.lightTheme,
       //textDirection: TextDirection.rtl,
       getPages: AppRoutes().routes,
-      initialRoute: AppRoutes.getLayoutRout(),
+      initialRoute: AppRoutes.getSplashRout(),
     ));
   }
 }

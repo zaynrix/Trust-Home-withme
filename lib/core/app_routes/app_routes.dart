@@ -117,7 +117,10 @@ class AppRoutes {
     GetPage(name: favorites, page: () => const FavoritesScreen()),
     GetPage(name: details, page: () => const PropertyDetailsScreen()),
     GetPage(name: notification, page: () => const NotificationScreen()),
-    GetPage(name: filter, page: () => const FilterScreen(), binding: FilterBinding()),
+    GetPage(
+        name: filter,
+        page: () => const FilterScreen(),
+        binding: FilterBinding()),
     GetPage(name: helping, page: () => const HelpingScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: booking, page: () => const BookingScreen()),

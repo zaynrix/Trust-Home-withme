@@ -4,6 +4,7 @@ import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/core/widgets/app_widgets.dart';
 import 'package:final_project/features/auth_feature/widgets/auth_layout.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -32,18 +33,27 @@ class VerificationScreen extends StatelessWidget {
                   height: AppSizes.height26.h,
                 ),
                 SizedBox(
-                  height: AppSizes.height20*5.h,
-                  child:    OtpTextField(
+                  height: AppSizes.height20 * 6.h,
+                  width: double.infinity,
+                  child: OtpTextField(
+                    borderRadius: BorderRadius.circular(12),
+                    showCursor: true,
                     numberOfFields: 4,
-                    fillColor: AppColors.primaryColor,
-                     fieldWidth: 50.w,
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 24),
+                    textStyle: Theme.of(context).textTheme.headline1,
+                    keyboardType: TextInputType.number,
+                    fillColor: Colors.grey.shade100,
+                    fieldWidth: 66.w,
+                    filled: true,
                     showFieldAsBox: true,
-                    onSubmit: (String verificationCode){
+                    onSubmit: (String verificationCode) {
                       // c.codeController.text=verificationCode;
                     }, // end onSubmit
                   ),
                 ),
-                DefaultButton(AppTexts.checkCode.tr, AppRoutes.getCreatePassRout()),
+                DefaultButton(
+                    AppTexts.checkCode.tr, AppRoutes.getCreatePassRout()),
                 const SizedBox(
                   height: AppSizes.height10,
                 ),
@@ -52,13 +62,10 @@ class VerificationScreen extends StatelessWidget {
                   style: context.theme.textTheme.headline5
                       ?.copyWith(fontSize: AppSizes.fontSize16),
                 ),
-
               ],
             ),
           ),
         ),
         AppTexts.checkCode.tr);
   }
-
-
 }

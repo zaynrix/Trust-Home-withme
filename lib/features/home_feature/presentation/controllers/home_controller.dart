@@ -12,30 +12,41 @@ import 'package:get/get.dart';
 import '../../../../core/app_sizes/app_sizes.dart';
 import '../../../../core/app_texts/app_texts.dart';
 
-class HomeController extends GetxController{
-  TextEditingController searchController=TextEditingController();
-  int index=0;
-  bool changeView1Bool=false;
-  bool changeView2Bool=false;
+class HomeController extends GetxController {
+  TextEditingController searchController = TextEditingController();
+  int index = 0;
+  bool changeView1Bool = false;
+  bool changeView2Bool = false;
 
-  HomeEntity homeEntity=HomeEntity(image: AppImages.houses.toString(), area: '200 م2', location: 'فلسطين ', subLocation1: 'قطاع غزة', subLocation2: 'الصناعة', bathrooms: ' 3 غرف نوم', bedrooms: ' 3 حمامات');
-  void changeView1(){
-    changeView1Bool=!changeView1Bool;
-    changeView2Bool=false;
-    update();
-  }void changeView2(){
-    changeView2Bool=!changeView2Bool;
-    changeView1Bool=false;
+  HomeEntity homeEntity = HomeEntity(
+      image: AppImages.houses.toString(),
+      area: '200 م2',
+      location: 'فلسطين ',
+      subLocation1: 'قطاع غزة',
+      subLocation2: 'الصناعة',
+      bathrooms: ' 3 غرف نوم',
+      bedrooms: ' 3 حمامات');
+
+  void changeView1() {
+    changeView1Bool = !changeView1Bool;
+    changeView2Bool = false;
     update();
   }
-List<Widget> screens=[
-  HomeScreen(),
- ChatContactScreen(),
-  FavoritesScreen(),
-  SettingScreen()
-];
 
-  List<IconData> icons=[
+  void changeView2() {
+    changeView2Bool = !changeView2Bool;
+    changeView1Bool = false;
+    update();
+  }
+
+  List<Widget> screens = [
+    const HomeScreen(),
+    const ChatContactScreen(),
+    const FavoritesScreen(),
+    const SettingScreen()
+  ];
+
+  List<IconData> icons = [
     Icons.bed_outlined,
     Icons.bathtub_outlined,
     Icons.living,
@@ -50,10 +61,8 @@ List<Widget> screens=[
     Icons.elevator_outlined,
   ];
 
-void changScreen(int currentIndex){
- index= currentIndex;
-  update();
-}
-
-
+  void changScreen(int currentIndex) {
+    index = currentIndex;
+    update();
+  }
 }

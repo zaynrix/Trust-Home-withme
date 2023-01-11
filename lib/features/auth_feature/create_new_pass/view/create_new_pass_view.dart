@@ -82,7 +82,7 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
                         ),
                         DefaultButton(
                           AppTexts.createNewPass,
-                          AppRoutes.getHomeRout(),
+                          AppRoutes.getLayoutRout(),
                           function: () {
                             setState(() {
                               isCreate == true;
@@ -95,7 +95,7 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
                       ],
                     ),
                   ),
-                  isCreate
+                  isCreate == true
                       ? Card(
                           shape: RoundedRectangleBorder(
                             borderRadius:
@@ -134,5 +134,34 @@ class _CreateNewPassScreenState extends State<CreateNewPassScreen> {
           ),
         ),
         AppTexts.newPass.tr);
+  }
+}
+
+class CustomBoardingBtn extends StatelessWidget {
+  const CustomBoardingBtn(
+      {Key? key,
+      required this.color,
+      required this.onPressed,
+      required this.title,
+      required this.textStyle})
+      : super(key: key);
+
+  final Color color;
+  final Function() onPressed;
+
+  // final Widget? child;
+  final String title;
+  final TextStyle textStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      onPressed: onPressed,
+      color: color,
+      child: Text(
+        title,
+        style: textStyle,
+      ),
+    );
   }
 }

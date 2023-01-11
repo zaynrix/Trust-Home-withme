@@ -28,7 +28,7 @@ class SignInScreen extends StatelessWidget {
                 key: formKey,
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                         width: double.infinity,
                         height: AppSizes.height189.h,
                         child: Image.asset(
@@ -114,7 +114,7 @@ class SignInScreen extends StatelessWidget {
                             style: context.theme.textTheme.headline5
                                 ?.copyWith(color: AppColors.headLine4Color),
                             children: [
-                              const TextSpan(text: ' '),
+                              const TextSpan(text: '  '),
                               TextSpan(
                                   text: AppTexts.createAccount.tr,
                                   style: context.theme.textTheme.headline5

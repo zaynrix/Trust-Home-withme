@@ -3,16 +3,20 @@ import 'package:get/get.dart';
 
 class AuthLayout extends StatelessWidget {
   final Widget pageContent;
-  final String pagetitle;
+  final String pageTitle;
 
-  const AuthLayout(this.pageContent, this.pagetitle);
+  const AuthLayout(
+    this.pageContent,
+    this.pageTitle, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: context.theme.scaffoldBackgroundColor,
-        title: Text(pagetitle.tr),
+        title: Text(pageTitle.tr , style: Theme.of(context).textTheme.headline1,),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {

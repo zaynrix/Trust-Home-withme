@@ -13,7 +13,8 @@ import '../controller/onBoarding_controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
-PageController pageController=PageController();
+  PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     /* void submit() {
@@ -27,78 +28,118 @@ PageController pageController=PageController();
 
     return GetBuilder<OnBoardingController>(
         init: OnBoardingController(),
-        builder: ((onboardingcontroller) =>
-        Scaffold(
-
-          body: SafeArea(
-            child: Padding(
-              padding:  EdgeInsets.all(AppSizes.padding20.w.h),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: PageView.builder(
-
-                        itemBuilder: (context, index) =>Column(
-                      children: [
-                        Image.asset(onboardingcontroller.onboardImages[index],height: 335,width: 335,),
-
-                        Text(onboardingcontroller.onboardTitles[index].toUpperCase(),
-                        style: context.theme.textTheme.headline1?.copyWith(
-                          fontSize: 18.sp
+        builder: ((onboardingcontroller) => Scaffold(
+              body: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.all(AppSizes.padding20.w.h),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * .50,
+                        child: PageView.builder(
+                          itemBuilder: (context, index) => Column(
+                            children: [
+                              Image.asset(
+                                onboardingcontroller.onboardImages[index],
+                                height: 335,
+                                width: 335,
+                              ),
+                              Text(
+                                onboardingcontroller.onboardTitles[index]
+                                    .toUpperCase(),
+                                style: context.theme.textTheme.headline1
+                                    ?.copyWith(fontSize: 18.sp),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: AppSizes.padding20.h,
+                              ),
+                              Text(
+                                onboardingcontroller.onboardDes[index],
+                                style: context.theme.textTheme.headline3,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          onPageChanged: (index) =>
+                              onboardingcontroller.onPageChanged(index),
+                          controller: pageController,
+                          itemCount: onboardingcontroller.onboardImages.length,
                         ),
-                          textAlign: TextAlign.center,
-                        ),Text(onboardingcontroller.onboardDes[index],
-                        style: context.theme.textTheme.headline3,
-                          textAlign: TextAlign.center,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: AppSizes.height40.h),
+                        child: SmoothPageIndicator(
+                          controller: pageController,
+                          count: onboardingcontroller.onboardImages.length,
+                          effect: const WormEffect(
+                              activeDotColor: AppColors.primaryColor,
+                              dotColor: AppColors.primaryIndicatorColor,
+                              dotWidth: 46,
+                              dotHeight: 3),
                         ),
+                      ),
 
-                      ],
-                    ),
-                    onPageChanged: (index)=>onboardingcontroller.onPageChanged(index),
-                    controller: pageController,
-                      itemCount: onboardingcontroller.onboardImages.length,
-                    ),
-                  ),
-                  Padding(
-                    padding:  EdgeInsets.only(bottom:AppSizes.height40.h),
-                    child: SmoothPageIndicator(controller: pageController, count: onboardingcontroller.onboardImages.length,
-                    effect: WormEffect(
-                      activeDotColor: AppColors.primaryColor,
-                      dotColor: AppColors.primaryColor.withOpacity(0.7),
-                      dotWidth: AppSizes.radius12.w,
-                      dotHeight: AppSizes.radius8.h
-                    ),
-                    ),
-                  ),
+                      CustomBoardingBtn(
+                        color: AppColors.primaryColor,
+                        onPressed: () {
+                          Get.offAndToNamed(AppRoutes.getLayoutRout());
+                        },
+                        title: AppTexts.explore.tr,
+                        textStyle: context.theme.textTheme.headline2!,
+                      ),
+                      SizedBox(
+                        height: AppSizes.padding20.h,
+                      ),
+                      CustomBoardingBtn(
+                        color: AppColors.sigInUpBtnColor,
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.getSignINRout());
+                        },
+                        title: AppTexts.signIn.tr,
+                        textStyle: context.theme.textTheme.headline2!.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
 
-
-                  MaterialButton(onPressed: (){
-                    Get.offAndToNamed(AppRoutes.getLayoutRout());
-                  },
-                  child: Text(AppTexts.explore.tr,style: context.theme.textTheme.headline2,),
-                    color: AppColors.primaryColor,
+                      // SizedBox(
+                      //   height: AppSizes.padding20.h,
+                      // ),
+                    ],
                   ),
-                  SizedBox(
-                    height: AppSizes.padding20.h,
-                  ),
-                  MaterialButton(onPressed: (){
-                    Get.toNamed(AppRoutes.getSignINRout());
-                  },
-                  child: Text(AppTexts.signIn.tr,style: context.theme.textTheme.headline2,),
-                    color: AppColors.primaryColor,
-                  ),
-                  SizedBox(
-                    height: AppSizes.padding20.h,
-                  ),
-
-
-                ],
+                ),
               ),
-            ),
-          ),
+            )));
+  }
+}
 
-        )
-        ));
+class CustomBoardingBtn extends StatelessWidget {
+  const CustomBoardingBtn(
+      {Key? key,
+      required this.color,
+      required this.onPressed,
+      required this.title,
+      required this.textStyle})
+      : super(key: key);
+
+  final Color color;
+  final Function() onPressed;
+
+  // final Widget? child;
+  final String title;
+  final TextStyle textStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      onPressed: onPressed,
+      color: color,
+      child: Text(
+        title,
+        style: textStyle,
+      ),
+    );
   }
 }

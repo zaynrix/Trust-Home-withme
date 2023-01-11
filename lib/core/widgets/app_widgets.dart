@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../app_routes/app_routes.dart';
 
 class DefaultTextForm extends StatelessWidget {
   TextEditingController textEditingController;
@@ -86,7 +85,7 @@ class DefaultButton extends StatelessWidget {
   final String page;
   final Function? function;
 
-  const DefaultButton(this.buttonText, this.page, {this.function});
+  const DefaultButton(this.buttonText, this.page, {super.key, this.function});
 
   @override
   Widget build(BuildContext context) {

@@ -42,72 +42,77 @@ class AgentDetailsScreen extends StatelessWidget {
               Center(
                   child: Text(AppTexts.userName.tr,
                       style: context.theme.textTheme.headline1)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(AppSizes.padding20.w.h),
-                      child: Column(
-                        children: [
-                          Text(AppTexts.sell.tr,
-                              style: context.theme.textTheme.headline1
-                                  ?.copyWith(fontSize: 18.sp)),
-                          Text('122', style: context.theme.textTheme.headline4),
-                        ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(AppSizes.padding20.w.h),
+                        child: Column(
+                          children: [
+                            Text(AppTexts.sell.tr,
+                                style: context.theme.textTheme.headline1
+                                    ?.copyWith(fontSize: 18.sp)),
+                            Text('122',
+                                style: context.theme.textTheme.headline4),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(AppSizes.padding20.w.h),
-                      child: Column(
-                        children: [
-                          Text(AppTexts.take.tr,
-                              style: context.theme.textTheme.headline1
-                                  ?.copyWith(fontSize: 18.sp)),
-                          Text('320', style: context.theme.textTheme.headline4),
-                        ],
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(AppSizes.padding20.w.h),
+                        child: Column(
+                          children: [
+                            Text(AppTexts.take.tr,
+                                style: context.theme.textTheme.headline1
+                                    ?.copyWith(fontSize: 18.sp)),
+                            Text('320',
+                                style: context.theme.textTheme.headline4),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(AppSizes.padding20.w.h),
-                      child: Column(
-                        children: [
-                          Text(AppTexts.rate.tr,
-                              style: context.theme.textTheme.headline1
-                                  ?.copyWith(fontSize: 18.sp)),
-                          Row(
-                            children: const [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                              ),
-                            ],
-                          )
-                        ],
+                    Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(AppSizes.padding20.w.h),
+                        child: Column(
+                          children: [
+                            Text(AppTexts.rate.tr,
+                                style: context.theme.textTheme.headline1
+                                    ?.copyWith(fontSize: 18.sp)),
+                            Row(
+                              children: const [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: AppSizes.padding20.h),

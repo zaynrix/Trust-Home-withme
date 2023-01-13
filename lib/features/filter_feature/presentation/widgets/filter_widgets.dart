@@ -2,7 +2,6 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/app_colors/app_colors.dart';
 import '../../../../core/app_texts/app_texts.dart';
 
@@ -11,11 +10,12 @@ class FilterWidgets extends StatelessWidget {
   final List<String> items;
   final Function changeValue;
 
-  const FilterWidgets(
-      {super.key,
-      required this.selectedValue,
-      required this.items,
-      required this.changeValue});
+  const FilterWidgets({
+    super.key,
+    required this.selectedValue,
+    required this.items,
+    required this.changeValue,
+  });
 
   @override
   Widget build(BuildContext context) {

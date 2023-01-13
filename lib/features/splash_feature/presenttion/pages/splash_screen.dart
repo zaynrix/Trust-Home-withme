@@ -4,17 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:final_project/core/app_routes/app_routes.dart';
 
 import '../../../../core/app_images/app_images.dart';
+import '../../../../core/app_network/cache_helper.dart';
+import '../../../../core/app_network/end_points.dart';
+import '../../../../core/app_routes/app_routes.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  bool? isSaved=SharedPrefs.getDta( key: 'onBoarding');
+  // EndPoints.token=SharedPrefs.getString( 'token').toString();
+  String? startWidget;
+
 
   @override
   Widget build(BuildContext context) {
+    if(isSaved!=null){
+      if(EndPoints.token!=null) {
+        startWidget = AppRoutes.getLayoutRout();
+      }else {
+        startWidget=AppRoutes.getSignInRout();
+      }
+    }else {
+      startWidget=AppRoutes.getOnBoardingRout();
+    }
     Future.delayed(const Duration(seconds: 5), (){
-      Get.offAllNamed(AppRoutes.getOnBoardingRout());
+      isSaved!=true?Get.offAllNamed(AppRoutes.getOnBoardingRout()):Get.offAllNamed(AppRoutes.getSignInRout());
     });
     return Scaffold(
       body: Column(

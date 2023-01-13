@@ -23,6 +23,12 @@ class AppImages{
   static const String agentImage='assets/images/agent1.jpg';
   static const String mapImage='assets/images/map.png';
   static const List<String> houses=[
+    // 'assets/images/house1.png',
+    // 'assets/images/house2.png',
+    // 'assets/images/house3.png',
+    // 'assets/images/house4.png',
+    // 'assets/images/house5.png',
+    // 'assets/images/house6.png',
     'assets/images/house7.png',
     'assets/images/house8.png',
     'assets/images/house9.png',
@@ -33,6 +39,7 @@ class AppImages{
 
   ];
   static const List<String> estateTypes=[
+
     'assets/images/apartments 1.svg',
     'assets/images/apartments 1.svg',
     'assets/images/apartments 1.svg',

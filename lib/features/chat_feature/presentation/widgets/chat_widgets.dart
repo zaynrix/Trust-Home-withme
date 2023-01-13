@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_themes/app_themes.dart';
 import 'package:final_project/features/chat_feature/presentation/pages/chat_view.dart';
@@ -22,12 +23,13 @@ class ChatWidgets {
           leading:  Padding(
             padding: EdgeInsets.all(AppSizes.height10/2.h.w),
             child: CircleAvatar(
-                backgroundColor: Colors.grey,
-                child: Icon(
-                  Icons.person,
-                  size: 30,
-                  color: Colors.white,
-                )),
+
+                //backgroundColor: Colors.grey,
+                backgroundImage: ExactAssetImage(
+                  AppImages.userImage,
+
+                )
+            ),
           ),
           title: Text(title,style: AppThemes.lightTheme.textTheme.headline5,),
           subtitle:subtitle !=null? Text(subtitle): null,

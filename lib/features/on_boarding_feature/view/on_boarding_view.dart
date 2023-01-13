@@ -9,7 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../core/app_network/cache_helper.dart';
 import '../controller/onBoarding_controller.dart';
+import '../widgets/on_boarding_widget.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
@@ -17,14 +19,14 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /* void submit() {
+     void submit() {
       SharedPrefs.saveData(key: 'onBoarding', value: true).then(((value) {
         if (value = true) {
-          Get.offAndToNamed(RoutesClass.getLoginRoute());
+          Get.offAndToNamed(AppRoutes.getSignInRout());
 
         }
       }));
-    }*/
+    }
 
     return GetBuilder<OnBoardingController>(
         init: OnBoardingController(),
@@ -33,13 +35,14 @@ class OnBoardingScreen extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(AppSizes.padding20.w.h),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height * .50,
+                       height:AppSizes.height478.h,
                         child: PageView.builder(
                           itemBuilder: (context, index) => Column(
+
                             children: [
                               Image.asset(
                                 onboardingcontroller.onboardImages[index],
@@ -70,11 +73,11 @@ class OnBoardingScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: AppSizes.height40.h),
+                        padding: EdgeInsets.only(bottom: AppSizes.height40.h,top: AppSizes.height10.h),
                         child: SmoothPageIndicator(
                           controller: pageController,
                           count: onboardingcontroller.onboardImages.length,
-                          effect: const WormEffect(
+                          effect:const  WormEffect(
                               activeDotColor: AppColors.primaryColor,
                               dotColor: AppColors.primaryIndicatorColor,
                               dotWidth: 46,
@@ -96,7 +99,8 @@ class OnBoardingScreen extends StatelessWidget {
                       CustomBoardingBtn(
                         color: AppColors.sigInUpBtnColor,
                         onPressed: () {
-                          Get.toNamed(AppRoutes.getSignINRout());
+                          submit();
+                          Get.toNamed(AppRoutes.getSignInRout());
                         },
                         title: AppTexts.signIn.tr,
                         textStyle: context.theme.textTheme.headline2!.copyWith(
@@ -115,31 +119,4 @@ class OnBoardingScreen extends StatelessWidget {
   }
 }
 
-class CustomBoardingBtn extends StatelessWidget {
-  const CustomBoardingBtn(
-      {Key? key,
-      required this.color,
-      required this.onPressed,
-      required this.title,
-      required this.textStyle})
-      : super(key: key);
 
-  final Color color;
-  final Function() onPressed;
-
-  // final Widget? child;
-  final String title;
-  final TextStyle textStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: onPressed,
-      color: color,
-      child: Text(
-        title,
-        style: textStyle,
-      ),
-    );
-  }
-}

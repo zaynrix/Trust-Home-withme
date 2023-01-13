@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class AppColors {
-  //static final Color primaryColor=HexColor('#0347C8');
-  static const Color primaryColor = Color(0xff0347c8);
+  static const Color primaryColor=Color(0xff0347C8);
+  //static const Color primaryColor = Color(0xff0347c8);
 
   static const Color primaryIndicatorColor = Colors.white;
   static const Color headLine1Color = Color(0xff374053);

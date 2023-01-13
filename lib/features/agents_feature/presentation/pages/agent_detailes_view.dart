@@ -27,7 +27,7 @@ class AgentDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Center(
+               Center(
                 child: CircleAvatar(
                   radius: 81,
                   backgroundColor: AppColors.primaryColor,
@@ -138,7 +138,7 @@ class AgentDetailsScreen extends StatelessWidget {
                 child: MaterialButton(
                   color: AppColors.primaryColor,
                   onPressed: () {
-                    Get.toNamed(AppRoutes.getChatRout());
+                    Get.toNamed(AppRoutes.getchatRout());
                   },
                   child: Text(
                     AppTexts.startChatting.tr,

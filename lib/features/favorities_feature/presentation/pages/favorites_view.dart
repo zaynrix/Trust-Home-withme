@@ -17,14 +17,7 @@ class FavoritesScreen extends StatelessWidget {
         AppBar(
             title: Text(AppTexts.favorite.tr),
             backgroundColor: context.theme.scaffoldBackgroundColor,
-            leading: IconButton(
-              onPressed: () {
-                Get.toNamed(AppRoutes.getLayoutRout());
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-              ),
-            )),
+         ),
         Padding(
           padding: EdgeInsets.all(AppSizes.padding20.h.w),
           child: Column(
@@ -48,7 +41,11 @@ class FavoritesScreen extends StatelessWidget {
               SizedBox(
                 height: AppSizes.padding20.h,
               ),
-              DefaultButton(AppTexts.explore.tr, AppRoutes.getLayoutRout()),
+              DefaultButton(AppTexts.explore.tr,
+              function: (){
+                Get.toNamed(AppRoutes.getLayoutRout());
+              },
+              ),
             ],
           ),
         ),

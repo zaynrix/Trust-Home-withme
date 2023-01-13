@@ -4,6 +4,7 @@ import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/features/home_feature/domain/entities/home_item_entity.dart';
+import 'package:final_project/features/home_feature/presentation/controllers/home_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,15 +22,16 @@ class EstateCard extends StatefulWidget {
 }
 
 class _EstateCardState extends State<EstateCard> {
+  HomeController controller=Get.find<HomeController>();
   late DateTime dateTime;
 
-  bool _isClicked = false;
+
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(AppRoutes.getDetailsRout());
+        Get.toNamed(AppRoutes.getdetailsRout());
       },
       child: Card(
         child: Padding(
@@ -66,12 +68,12 @@ class _EstateCardState extends State<EstateCard> {
                             padding: EdgeInsets.zero,
                             onPressed: () {
                               setState(() {
-                                _isClicked = !_isClicked;
+                              controller.isClicked = ! controller.isClicked;
                               });
                             },
                             icon: Icon(
                               Icons.favorite,
-                              color: _isClicked ? Colors.red : Colors.white,
+                              color:  controller.isClicked ? Colors.red : Colors.white,
                               size: 16,
                             ),
                           ),
@@ -102,12 +104,8 @@ class _EstateCardState extends State<EstateCard> {
                           radius: 16,
                           child: IconButton(
                             padding: EdgeInsets.zero,
-                            onPressed: () async {
-                              dateTime = (await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime.utc(2031)))!;
+                            onPressed: ()  {
+                             Get.toNamed(AppRoutes.getBookingRout());
                             },
                             icon: const Icon(
                               Icons.calendar_month,
@@ -152,7 +150,7 @@ class _EstateCardState extends State<EstateCard> {
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutes.getDetailsRout());
+                        Get.toNamed(AppRoutes.getdetailsRout());
                       },
                       child: Text(
                         AppTexts.detailes.tr,

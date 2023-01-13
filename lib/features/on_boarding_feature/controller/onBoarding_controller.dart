@@ -11,7 +11,7 @@ class OnBoardingController extends GetxController {
   int index = 0;
   List<String> screens = [
     AppRoutes.getLayoutRout(),
-    AppRoutes.getSignINRout(),
+    AppRoutes.getSignInRout(),
     AppRoutes.getSignUpRout(),
   ];
   List<String> onboardImages = [

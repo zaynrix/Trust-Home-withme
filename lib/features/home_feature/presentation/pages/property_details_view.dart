@@ -4,6 +4,7 @@ import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/features/home_feature/presentation/controllers/home_controller.dart';
+import 'package:final_project/features/on_boarding_feature/widgets/on_boarding_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,7 +73,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(AppTexts.detailesScreenTitle),
+          title:  Text(AppTexts.detailesScreenTitle.tr),
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor),
       body: SingleChildScrollView(
@@ -257,14 +258,14 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 height: AppSizes.padding20.w,
               ),
               Text(
-                AppTexts.aboutProperty,
+                AppTexts.aboutProperty.tr,
                 style: context.theme.textTheme.headline6,
               ),
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
               Text(
-                AppTexts.propertyDiscreption,
+                AppTexts.propertyDiscreption.tr,
                 style: context.theme.textTheme.headline3,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
@@ -280,7 +281,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 height: AppSizes.padding20.w,
               ),
               Text(
-                AppTexts.detailesScreenTitle,
+                AppTexts.detailesScreenTitle.tr,
                 style: context.theme.textTheme.headline6,
               ),
               SizedBox(
@@ -295,18 +296,28 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                     children: List.generate(
                         AppTexts.estateDetails.length,
                         (index) => Card(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    AppTexts.estateDetails[index],
-                                    style: context.theme.textTheme.headline3,
-                                  ),
-                                  Icon(
-                                    controller.icons[index],
-                                    color: AppColors.headLine3Color,
-                                  )
-                                ],
+                              child: Padding(
+                                padding:  EdgeInsets.symmetric(horizontal: AppSizes.height10.w),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+
+                                      child: Text(
+                                        AppTexts.estateDetails[index].tr,
+                                        style: context.theme.textTheme.headline3,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    Icon(
+                                      controller.icons[index],
+                                      color: AppColors.headLine3Color,
+                                    )
+                                  ],
+                                ),
                               ),
                             ))),
               ),
@@ -314,7 +325,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                 height: AppSizes.padding20.h,
               ),
               Text(
-                AppTexts.address,
+                AppTexts.address.tr,
                 style: context.theme.textTheme.headline6,
               ),
               SizedBox(
@@ -355,7 +366,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                         width: AppSizes.height10.w,
                       ),
                       Text(
-                        AppTexts.userPhoneNumber,
+                        AppTexts.userPhoneNumber.tr,
                         style: context.theme.textTheme.headline4,
                       ),
                       const Spacer(),
@@ -369,7 +380,7 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
                           )),
                       IconButton(
                           onPressed: () {
-                            Get.toNamed(AppRoutes.getChatRout());
+                            Get.toNamed(AppRoutes.getchatRout());
                           },
                           icon: Icon(
                             Icons.email,
@@ -382,7 +393,12 @@ class _PropertyDetailsScreenState extends State<PropertyDetailsScreen> {
               SizedBox(
                 height: AppSizes.padding20.w,
               ),
-              DefaultButton(AppTexts.bookNow, AppRoutes.getBookingRout()),
+              CustomBoardingBtn(
+                color: AppColors.primaryColor,textStyle: context.theme.textTheme.headline2!,
+                title:AppTexts.bookNow.tr,
+              onPressed: (){
+                Get.toNamed(AppRoutes.getBookingRout());
+              },),
             ],
           ),
         ),

@@ -34,7 +34,7 @@ class AgentsScreen extends StatelessWidget {
                   child: GridView.builder(
                 itemCount: 14,
                 itemBuilder: (context, index) => InkWell(
-                  onTap: () => Get.toNamed(AppRoutes.getAgentDetailsRout()),
+                  onTap: () => Get.toNamed(AppRoutes.getagentDetailsRout()),
                   child: Card(
                     child: Padding(
                       padding: EdgeInsets.all(AppSizes.height10.w.h),
@@ -79,10 +79,10 @@ class AgentsScreen extends StatelessWidget {
                                     style: context.theme.textTheme.headline1
                                         ?.copyWith(fontSize: 8.sp),
                                   ),
-                                  const Icon(
+                                   Icon(
                                     Icons.home_filled,
                                     size: 16,
-                                    color: AppColors.secIconsColor,
+                                    color: AppColors.iconsColor,
                                   ),
                                   Text(
                                     '5',

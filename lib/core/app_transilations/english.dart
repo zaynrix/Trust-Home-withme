@@ -1,23 +1,26 @@
 import '../app_texts/app_texts.dart';
 
 const Map<String, String> en = {
-  AppTexts.onBoardingTitle:
-      'We search thoroughly to bring you the property you deserve',
-  AppTexts.onBoardingTitle1: 'Wonderful Clients, Great Results!',
-  AppTexts.onBoardingTitle2: 'When Dreams Become Home!',
-  AppTexts.onBoardingDescription:
-      'Your fastest way to find the property youre looking for',
-  AppTexts.onBoardingDescription1:
-      'We provide you with the right prices for selling and renting your property',
-  AppTexts.onBoardingDescription2:
-      'We offer what you need most to find your right home.',
+AppTexts. onBoardingTitle : 'We search thoroughly to bring you the property you deserve',
+AppTexts. onBoardingTitle1 : 'Wonderful Clients, Great Results!',
+AppTexts. onBoardingTitle2 : 'When Dreams Become Home!',
+  AppTexts.bookingConfirmed: 'Booking Confirmed!',
+  AppTexts.waitForYou: 'We are waiting for you',
+  AppTexts. bookingConfirmedSen:'I have booked an appointment with the real estate agent',
+AppTexts. onBoardingDescription:
+'Your fastest way to find the property youre looking for',
+AppTexts. onBoardingDescription1 :
+'We provide you with the right prices for selling and renting your property',
+AppTexts. onBoardingDescription2 :
+'We offer what you need most to find your right home.',
   AppTexts.signUp: 'Register a new user',
   AppTexts.explore: 'Explore',
   AppTexts.signIn: 'Login',
   AppTexts.myProfile: 'My Account',
   AppTexts.pleaseEnterPhone: 'Please enter a phone number',
   AppTexts.pleaseEnterPas: 'Enter your password',
-  AppTexts.pleaseEnterName: 'Enter your Name ',
+  AppTexts.pleaseEnterName:'Enter your Name ',
+
   AppTexts.notifications: 'Notifications',
   AppTexts.privacy: 'Security and Privacy',
   AppTexts.lang: 'Language',
@@ -66,7 +69,7 @@ within seconds.''',
   AppTexts.detailesScreenTitle: 'property details',
   AppTexts.aboutProperty: 'About this Property',
   AppTexts.searchLabel: 'Address, city',
-  AppTexts.palestine: 'Palestine',
+  AppTexts. palestine: 'Palestine',
   AppTexts.gaza: 'Gaza',
   AppTexts.region: 'Industry',
   AppTexts.propertyDiscreption:
@@ -105,8 +108,8 @@ The building is years old, looking northeast from Al-Tuffah area ''',
   AppTexts.wifi: 'Wi-fi',
   AppTexts.elevator: 'elevator',
   AppTexts.availableResults: 'Available Results',
-  AppTexts.contactWithAgent: 'Contact with Agent',
-  AppTexts.startChatting: 'Start Chatting',
+  AppTexts.contactWithAgent:'Contact with Agent',
+AppTexts.startChatting:'Start Chatting',
   AppTexts.home: 'Home',
   AppTexts.messages: 'Messages',
   AppTexts.favorite: 'Favorites',
@@ -124,12 +127,11 @@ The building is years old, looking northeast from Al-Tuffah area ''',
   AppTexts.percent: 'percentage',
   AppTexts.dataSent: 'Data sent!',
   AppTexts.saveAndSent: 'Save and Send',
-  AppTexts.propertiesList: 'Property List',
-  AppTexts.rate: 'Rate',
-  AppTexts.take: 'Take',
-  AppTexts.sell: 'Sell',
-  AppTexts.findWithAgents:
-      'Find the best place to live with customer recommendations.',
+  AppTexts.propertiesList:'Property List',
+  AppTexts. rate: 'Rate',
+  AppTexts. take: 'Take',
+  AppTexts. sell: 'Sell',
+  AppTexts.findWithAgents: 'Find the best place to live with customer recommendations.',
   AppTexts.dataSentDescription:
       '''The data has been sent to the specialists and they will respond
 You must within a maximum period of two days.''',

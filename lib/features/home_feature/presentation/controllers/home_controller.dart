@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/features/chat_feature/presentation/pages/chat_contact_view.dart';
@@ -15,9 +17,20 @@ import '../../../../core/app_texts/app_texts.dart';
 class HomeController extends GetxController {
   TextEditingController searchController = TextEditingController();
   int index = 0;
+
   bool changeView1Bool = false;
   bool changeView2Bool = false;
-
+  bool isSelected = true;
+  Color cardSelectedColor=AppColors.primaryColor;
+  Color cardTextSelectedColor=AppColors.headLine2Color;
+  Color cardTextUnSelectedColor=AppColors.headLine3Color;
+  List<String> favoritesItems=[];
+  bool isClicked = false;
+  bool isLoading = false;
+void select(){
+  isSelected==true;
+  update();
+}
   HomeEntity homeEntity = HomeEntity(
       image: AppImages.houses.toString(),
       area: '200 م2',
@@ -33,6 +46,7 @@ class HomeController extends GetxController {
     update();
   }
 
+
   void changeView2() {
     changeView2Bool = !changeView2Bool;
     changeView1Bool = false;
@@ -42,7 +56,7 @@ class HomeController extends GetxController {
   List<Widget> screens = [
     const HomeScreen(),
     const ChatContactScreen(),
-    const FavoritesScreen(),
+     const FavoritesScreen(),
     const SettingScreen()
   ];
 

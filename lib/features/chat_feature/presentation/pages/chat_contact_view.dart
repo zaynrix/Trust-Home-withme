@@ -40,7 +40,8 @@ class _ChatContactScreen extends State<ChatContactScreen> {
     open == true? Icons.close_rounded :Icons.search_rounded,
     size: AppSizes.height10*3,
     )),
-    )
+    ),
+      IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
     ],
     ),
     Stack(

@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../core/app_colors/app_colors.dart';
 import '../controllers/addingProperty_controller.dart';
 
 class AddingPropertyScreen extends GetView<AddingPropertyController> {
@@ -133,7 +133,7 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
                               }
                             },
                           ),
-                          const Icon(
+                           Icon(
                             Icons.photo_library_outlined,
                             size: 40,
                             color: AppColors.headLine3Color,
@@ -171,7 +171,7 @@ class AddingPropertyScreen extends GetView<AddingPropertyController> {
                       ),
                       InkWell(
                         onTap: () => controller.pickIdImg(),
-                        child: const Icon(
+                        child:  Icon(
                           Icons.photo_library_outlined,
                           size: 40,
                           color: AppColors.headLine3Color,

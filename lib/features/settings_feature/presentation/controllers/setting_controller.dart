@@ -67,7 +67,7 @@ class SettingController extends GetxController {
         color: AppColors.headLine4Color,
       ),
       onPressed: () {
-        Get.toNamed(AppRoutes.getProfileRout());
+        Get.toNamed(AppRoutes.getprofileRout());
       },
     ),
     StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
@@ -92,7 +92,7 @@ class SettingController extends GetxController {
         color: AppColors.headLine4Color,
       ),
       onPressed: () {
-        Get.toNamed(AppRoutes.getLangRout());
+        Get.toNamed(AppRoutes.getlangRout());
       },
     ),
     IconButton(
@@ -101,7 +101,7 @@ class SettingController extends GetxController {
         color: AppColors.headLine4Color,
       ),
       onPressed: () {
-        Get.toNamed(AppRoutes.getHelpingRout());
+        Get.toNamed(AppRoutes.gethelpingRout());
       },
     ),
     Builder(

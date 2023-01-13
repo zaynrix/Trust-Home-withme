@@ -157,7 +157,7 @@ style: context.theme.textTheme.headline5?.copyWith(
           ),
         ),
       ),
-      AppTexts.signIn
+      AppTexts.signIn,skip: true,
     );
   }
 }

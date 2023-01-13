@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   TextEditingController searchController = TextEditingController();
   int index = 0;
 
-  bool changeView1Bool = false;
+  bool changeView1Bool = true;
   bool changeView2Bool = false;
   bool isSelected = true;
   Color cardSelectedColor=AppColors.primaryColor;

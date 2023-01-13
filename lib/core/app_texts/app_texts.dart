@@ -163,6 +163,12 @@ class AppTexts {
   static const String propertyProofImage=' صورة ثبوتية عن ملكية العقار';
   static const String idImage=' صورة الهوية';
   static const String percent='نسبته';
+  static const String skip='تخطي';
+  static const String editProfile='تعديل الملف الشخصي';
+  static const String editProfileConfirm='تم تعديل الملف الشخصي ';
+  static const String sure='هل أنت متأكد من أنك تريد تسجيل الخروج ؟ ';
+  static const String enterInfo='يجب ادخال هذا الحقل';
+  static const String confirmLogOut='نعم , قم بإزلته';
   static const String dataSent='تم إرسال البيانات  !';
   static const String bookingConfirmed='تم تأكيد الحجز !';
   static const String bookingConfirmedSen='لقد حجزت موعداً مع الوكيل العقاري';
@@ -179,6 +185,17 @@ class AppTexts {
   static const String rate='التقييم';
   static const String take='استلم';
   static const String sell='باع';
+  static const String rafah='باع';
+  static const String beitHanoun='بيت حانون';
+  static const String Jabalia='جباليا ';
+  static const String khanYunis='خان يونس ';
+  static const String deiralBalah='دير البلح';
+  static const String beitLahiya='بيت لاهيا ';
+  static const String baniSuheila='بني سهيلا ';
+  static const String khanYunisGovernorate='محافظة خان يونس';
+  static const String northGazaGovernorate='محافظة شمال غزة';
+  static const String deiralBalahGovernorate='محافظة دير البلح';
+  static const String rafahGovernorate='محافظة رفح';
   static const String findWithAgents='العثور على أفضل مكان للعيش فيه مع توصيات العملاء .';
   static const String dataSentDescription='''تم إرسال البيانات إلى المختصين وسيتم الرد
   عليك في مدة أقصاها يومين .''';

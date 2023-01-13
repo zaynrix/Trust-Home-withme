@@ -213,7 +213,7 @@ var formKey=GlobalKey<FormState>();
           ),
         ),
       ),
-      AppTexts.signUp
+      AppTexts.signUp,skip: true,
     );
   }
 }

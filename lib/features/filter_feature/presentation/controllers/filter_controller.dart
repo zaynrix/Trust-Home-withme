@@ -50,23 +50,19 @@ class FilterController extends GetxController {
   }
 
   List<String> estateTypes = [
-    AppTexts.house,
-    AppTexts.apartment,
-    AppTexts.building,
-    AppTexts.villa,
-    AppTexts.office,
-    AppTexts.land,
-    AppTexts.chalet
+    AppTexts.khanYunisGovernorate,
+    AppTexts.northGazaGovernorate,
+    AppTexts.deiralBalahGovernorate,
+    AppTexts.rafahGovernorate
   ];
 
   List<String> cites = [
-    AppTexts.house,
-    AppTexts.apartment,
-    AppTexts.building,
-    AppTexts.villa,
-    AppTexts.office,
-    AppTexts.land,
-    AppTexts.chalet
+    AppTexts. beitHanoun,
+    AppTexts. Jabalia,
+    AppTexts. khanYunis,
+    AppTexts. deiralBalah,
+    AppTexts. beitLahiya,
+    AppTexts. baniSuheila,
   ];
   String? selectedValue;
   String? selectedValue1;

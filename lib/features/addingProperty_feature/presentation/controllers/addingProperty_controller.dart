@@ -17,6 +17,7 @@ class AddingPropertyController extends GetxController{
   static TextInputType text=TextInputType.text;
   String? selectedValue;
   String? selectedValue1;
+  States state=States.Buy;
   List<TextEditingController> controllers=[
     nameController,
     phoneController,
@@ -68,3 +69,5 @@ class AddingPropertyController extends GetxController{
 
   }
 }
+
+enum States{Rent,Buy}

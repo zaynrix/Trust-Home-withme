@@ -7,6 +7,7 @@ import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/core/widgets/app_widgets.dart';
+import 'package:final_project/features/filter_feature/presentation/widgets/results_widgets.dart';
 import 'package:final_project/features/home_feature/domain/entities/home_item_entity.dart';
 import 'package:final_project/features/home_feature/presentation/controllers/home_controller.dart';
 import 'package:final_project/features/notification_feature/presentation/controllers/notification_controller.dart';
@@ -24,18 +25,10 @@ class HomeScreen extends StatefulWidget {
 }
 class HomeScreenState extends State<HomeScreen>  {
 HomeController controller=Get.put(HomeController());
-void startTimer() {
-  Timer.periodic(const Duration(seconds: 10), (t) {
-    setState(() {
-      controller.isLoading = false; //set loading to false
-    });
-    t.cancel(); //stops the timer
-  });
-}
+
 
 @override
 void initState() {
-  startTimer();  //start the timer on loading
   super.initState();
 }
 @override
@@ -201,9 +194,21 @@ void initState() {
                               child: Row(
                                 children: [
                                   IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        controller.changeView1Bool=!controller.changeView1Bool;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      size: 16,
+                                      Icons.grid_view,color:!controller.changeView1Bool
+                                        ? AppColors.headLine3Color
+                                        : AppColors.primaryColor,),),
+                                  IconButton(
                                       onPressed: () {
-                                        controller.changeView1();
-                                        print(controller.changeView1Bool);
+                                       setState(() {
+                                         controller.changeView1Bool=!controller.changeView1Bool;
+                                       });
                                       },
                                       icon: SvgPicture.asset(
                                         AppImages.verticalMenu,
@@ -211,31 +216,19 @@ void initState() {
                                             ? AppColors.headLine3Color
                                             : AppColors.primaryColor,
                                       )),
-                                  IconButton(
-                                      onPressed: () {
-                                        controller.changeView2();
-                                        print(controller.changeView2Bool);
-                                      },
-                                      icon: SvgPicture.asset(
-                                        AppImages.horizontalMenu,
-                                        color: controller.changeView2Bool
-                                            ? AppColors.headLine3Color
-                                            : AppColors.primaryColor,
-                                      ))
+
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                         SizedBox(
                           height: AppSizes.height10.h,
                         ),
-                    controller.isLoading?Center(
-                      child:CircularProgressIndicator(),
-                    ):    ListView.builder(
+                      ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return EstateCard(
+                            return  controller.changeView1Bool? EstateCard(
                             homeEntity: HomeEntity(
                               image: AppImages.houses[index],
                               area: '200 م2'.tr,
@@ -245,7 +238,15 @@ void initState() {
                               subLocation1: AppTexts.gaza.tr,
                               subLocation2: AppTexts.region.tr,
                             ),
-                          );
+                          ):ResultCard(homeEntity: HomeEntity(
+                              image: AppImages.houses[index],
+                              area: '200 م2'.tr,
+                              bathrooms: AppTexts.bath.tr + "" + "2",
+                              bedrooms: AppTexts.bedroom.tr + "" + "2",
+                              location: AppTexts.palestine.tr,
+                              subLocation1: AppTexts.gaza.tr,
+                              subLocation2: AppTexts.region.tr,
+                            ),);
                           },
                           shrinkWrap: true,
                           itemCount: AppImages.houses.length,

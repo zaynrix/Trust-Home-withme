@@ -74,7 +74,7 @@ class ResultCard extends StatelessWidget {
                           Text(
                             homeEntity.bathrooms,
                             style: context.theme.textTheme.headline3
-                                ?.copyWith(color: AppColors.headLine3Color,fontSize: 12),
+                                ?.copyWith(color: AppColors.headLine3Color,fontSize: 10),
                           ),
                           Image.asset(
                             AppImages.bathIcon,

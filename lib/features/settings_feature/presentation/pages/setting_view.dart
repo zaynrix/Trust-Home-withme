@@ -28,14 +28,7 @@ class _SettingScreenState extends State<SettingScreen> {
           AppBar(
               title: Text(AppTexts.settings.tr),
               backgroundColor: context.theme.scaffoldBackgroundColor,
-              leading: IconButton(
-                onPressed: () {
-                  Get.toNamed(AppRoutes.getLayoutRout());
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                ),
-              )),
+            ),
           Padding(
             padding: EdgeInsets.all(AppSizes.padding20.h.w),
             child: SingleChildScrollView(
@@ -69,7 +62,9 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                         const Spacer(),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(AppRoutes.getEditProfileRout());
+                            },
                             icon: Icon(
                               Icons.edit_outlined,
                               size: AppSizes.height20 + 10,

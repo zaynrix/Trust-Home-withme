@@ -128,18 +128,20 @@ class SettingController extends GetxController {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              'هل أنت متأكد من أنك تريد تسجيل الخروج ؟',
+                            AppTexts.sure.tr,
                               style: context.theme.textTheme.headline3,
                             ),
                           ),
                           MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.offAllNamed(AppRoutes.getSignInRout());
+                            },
                             minWidth: double.infinity,
                             height: 50,
                             padding: const EdgeInsets.all(AppSizes.height10),
                             color: AppColors.primaryColor,
                             child: Text(
-                              'نعم , قم بإزلته',
+                            AppTexts.confirmLogOut.tr,
                               style: context.theme.textTheme.headline2,
                             ),
                           ),
@@ -150,7 +152,10 @@ class SettingController extends GetxController {
                             padding: const EdgeInsets.symmetric(
                                 vertical: AppSizes.height10),
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.offAllNamed(AppRoutes.getLayoutRout());
+
+                              },
                               minWidth: double.infinity,
                               height: 50,
                               padding: const EdgeInsets.all(AppSizes.height10),

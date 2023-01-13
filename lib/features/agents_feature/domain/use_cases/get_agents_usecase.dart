@@ -4,13 +4,13 @@ import 'package:final_project/features/agents_feature/domain/entities/agents_ent
 import 'package:final_project/features/agents_feature/domain/repositories/agents_repository.dart';
 
 import '../../../../core/errors/fauilers.dart';
-class GetAllUsersUseCase {
+class GetAgentsUseCase {
 
   late AgentsRepository repository;
 
-  GetAllUsersUseCase({required this.repository});
+  GetAgentsUseCase({required this.repository});
 
-  Future<Either<Failure, Agents>> call() async{
+  Future<Either<Failure, AgentsEntity>> call() async{
     return await repository.getAgents();
   }
 

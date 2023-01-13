@@ -62,11 +62,7 @@ class FilterScreenState extends State<FilterScreen> {
                                 value: item,
                                 child: Text(
                                   item.tr,
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                                  style: context.theme.textTheme.headline2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ))
@@ -134,17 +130,13 @@ class FilterScreenState extends State<FilterScreen> {
                               ),
                             ],
                           ),
-                          items: controller.estateTypes
+                          items: controller.cites
                               .map((item) =>
                               DropdownMenuItem<String>(
                                 value: item,
                                 child: Text(
                                   item.tr,
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                                  style: context.theme.textTheme.headline2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ))
@@ -277,20 +269,20 @@ class FilterScreenState extends State<FilterScreen> {
                 AppTexts.estateCost.tr,
                 style: context.theme.textTheme.headline6,
               ),
-              SizedBox(
-                height: AppSizes.height40.h,
-              ),
               StatefulBuilder(
                 builder: (BuildContext context, StateSetter setState) =>
                     SfRangeSlider(
 
                       min: controller.min,
-                      shouldAlwaysShowTooltip: true,
+
                       max: controller.max,
                       values: controller.values1,
 
+
+                      interval: 20,
                       showLabels: true,
-                      enableTooltip: true,
+
+
                       labelPlacement: LabelPlacement.onTicks,
                       activeColor: AppColors.primaryColor,
                       inactiveColor: AppColors.primaryColor.withOpacity(.3),

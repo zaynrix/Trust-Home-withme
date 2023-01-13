@@ -1,8 +1,11 @@
+import 'package:final_project/core/app_colors/app_colors.dart';
 import 'package:final_project/core/app_images/app_images.dart';
 import 'package:final_project/core/app_routes/app_routes.dart';
 import 'package:final_project/core/app_sizes/app_sizes.dart';
 import 'package:final_project/core/app_texts/app_texts.dart';
 import 'package:final_project/core/widgets/app_widgets.dart';
+import 'package:final_project/features/home_feature/presentation/pages/home_view.dart';
+import 'package:final_project/features/on_boarding_feature/widgets/on_boarding_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -41,11 +44,7 @@ class FavoritesScreen extends StatelessWidget {
               SizedBox(
                 height: AppSizes.padding20.h,
               ),
-              DefaultButton(AppTexts.explore.tr,
-              function: (){
-                Get.toNamed(AppRoutes.getLayoutRout());
-              },
-              ),
+
             ],
           ),
         ),

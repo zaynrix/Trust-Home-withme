@@ -1,5 +1,6 @@
 import 'package:final_project/features/addingProperty_feature/presentation/bindings/addProperty_binding.dart';
 import 'package:final_project/features/addingProperty_feature/presentation/pages/addingProperty_view.dart';
+import 'package:final_project/features/agents_feature/presentation/binding/agents_binding.dart';
 import 'package:final_project/features/agents_feature/presentation/pages/agent_detailes_view.dart';
 import 'package:final_project/features/agents_feature/presentation/pages/agents_view.dart';
 import 'package:final_project/features/auth_feature/presentation/bindings/auth_binding.dart';
@@ -16,6 +17,7 @@ import 'package:final_project/features/home_feature/presentation/pages/property_
 import 'package:final_project/features/home_feature/presentation/widgets/home_layout.dart';
 import 'package:final_project/features/notification_feature/presentation/pages/notification_view.dart';
 import 'package:final_project/features/profile_feature/presentation/bindings/profile_binding.dart';
+import 'package:final_project/features/profile_feature/presentation/pages/edit_profile_view.dart';
 import 'package:final_project/features/profile_feature/presentation/pages/profile_view.dart';
 import 'package:final_project/features/filter_feature/presentation/pages/results_view.dart';
 import 'package:final_project/features/settings_feature/presentation/pages/helping_view.dart';
@@ -52,6 +54,7 @@ class AppRoutes{
   static String agents='/agents';
   static String agentDetails='/agentDetails';
   static String lang='/lang';
+  static String editProfile='/editProfile';
 
   static String getOnBoardingRout() => onBoarding;
   static String getSignInRout() => signIN;
@@ -76,6 +79,7 @@ class AppRoutes{
   static String getagentsRout() => agents;
   static String getagentDetailsRout() => agentDetails;
   static String getlangRout() => lang;
+  static String getEditProfileRout() => editProfile;
   List<GetPage> routes = [
     GetPage(name: onBoarding, page: () => OnBoardingScreen()),
     GetPage(name: signIN, page: () => SignInScreen(),binding: AuthBinding()),
@@ -93,9 +97,10 @@ class AppRoutes{
     GetPage(name: notification, page: () => NotificationScreen()),
     GetPage(name: filter, page: () => FilterScreen(),binding: FilterBinding()),
     GetPage(name: helping, page: () => HelpingScreen()),
+    GetPage(name: editProfile, page: () => EditProfileScreen(),binding: ProfileBinding()),
     GetPage(name: splash, page: () => SplashScreen()),
     GetPage(name: booking, page: () => BookingScreen(),binding: BookingBinding()),
-    GetPage(name: agents, page: () => AgentsScreen()),
+    GetPage(name: agents, page: () => AgentsScreen(),binding: AgentBinding()),
     GetPage(name: agentDetails, page: () => AgentDetailsScreen()),
     GetPage(name: lang, page: () => LangScreen()),
     GetPage(name: results, page: () => ResultsScreen(),binding: FilterBinding()),

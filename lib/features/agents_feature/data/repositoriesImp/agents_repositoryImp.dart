@@ -20,7 +20,7 @@ class AgentsRepositoryImp implements AgentsRepository{
 
 
   @override
-  Future<Either<Failure, AgentsEntity>> getAgents() async{
+  Future<Either<Failure, List<AgentsEntity>>> getAgents() async{
     if(await networkInfo.isConnected){
       try{
         final response=await agentsRemoteDataSource.getAgents();
@@ -42,5 +42,4 @@ class AgentsRepositoryImp implements AgentsRepository{
   }
 throw ConnectionFailure();
 
-}
-}
+}}

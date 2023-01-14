@@ -8,7 +8,7 @@ class AgentsController extends GetxController{
   GetAgentsUseCase agentsUseCase;
   AgentsController({required this.agentsUseCase});
 
-  AgentsEntity agentsEntity=AgentsEntity(id: 0, name: '', image: '');
+ List <AgentsEntity> agentsEntity=[];
   bool  isLoading = false;
 
   @override
@@ -34,9 +34,7 @@ class AgentsController extends GetxController{
     response?.fold((l) {
       ConnectionFailure();
     }, (r) {
-     agentsEntity.name=r.name;
-     agentsEntity.id=r.id;
-     agentsEntity.image=r.image;
+     agentsEntity=r;
     });
     endLoading();
   }

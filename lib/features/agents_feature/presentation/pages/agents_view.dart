@@ -41,7 +41,7 @@ class AgentsScreen extends GetView<AgentsController> {
     default:
                   return Expanded(
                     child: GridView.builder(
-                  itemCount: 1,
+                  itemCount: controller.agentsEntity.length,
                   itemBuilder: (context, index) => InkWell(
                     onTap: () => Get.toNamed(AppRoutes.getagentDetailsRout()),
                     child: Card(
@@ -74,7 +74,7 @@ class AgentsScreen extends GetView<AgentsController> {
                               ),
                               Center(
                                 child: Text(
-                                  controller.agentsEntity.name.tr,
+                                  controller.agentsEntity[index].name.tr,
                                   style: context.theme.textTheme.headline1
                                       ?.copyWith(fontSize: 14.sp),
                                 ),

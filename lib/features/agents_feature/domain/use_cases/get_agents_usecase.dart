@@ -10,7 +10,7 @@ class GetAgentsUseCase {
 
   GetAgentsUseCase({required this.repository});
 
-  Future<Either<Failure, AgentsEntity>> call() async{
+  Future<Either<Failure, List<AgentsEntity>>> call() async{
     return await repository.getAgents();
   }
 

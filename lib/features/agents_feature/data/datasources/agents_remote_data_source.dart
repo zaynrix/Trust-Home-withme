@@ -6,7 +6,7 @@ import '../../../../core/app_network/end_points.dart';
 import '../../../../core/errors/exceptions.dart';
 
 abstract class AgentsRemoteDataSource{
-  Future <AgentsModel> getAgents();
+  Future <List<AgentsModel>> getAgents();
 
 
 }
@@ -16,7 +16,7 @@ class AgentsRemoteImp implements AgentsRemoteDataSource {
     required this.dio
   });
   @override
-  Future<AgentsModel> getAgents()async {
+  Future<List<AgentsModel>> getAgents()async {
 
     Response response=await dio.get(EndPoints.AGENTS,
         options: Options(
@@ -26,9 +26,11 @@ class AgentsRemoteImp implements AgentsRemoteDataSource {
         )
     );
     if(response.statusCode==200){
-      AgentsModel   agents=AgentsModel.fromJson((response.data[0]));
-      print(agents.name);
-      print(agents);
+      List<AgentsModel> agents=[];
+      List list=response.data as List;
+      agents=list.map((e) => AgentsModel.fromJson(e)).toList();
+
+      print(list);
       return agents;
 
     }else{

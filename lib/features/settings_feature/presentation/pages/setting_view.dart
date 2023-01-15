@@ -20,6 +20,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   SettingController controller = Get.put(SettingController());
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,6 +31,7 @@ class _SettingScreenState extends State<SettingScreen> {
               title: Text(AppTexts.settings.tr),
               backgroundColor: context.theme.scaffoldBackgroundColor,
             ),
+
             Padding(
               padding: EdgeInsets.all(AppSizes.padding20.h.w),
               child: SingleChildScrollView(

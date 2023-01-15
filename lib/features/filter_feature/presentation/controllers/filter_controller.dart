@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import '../../../../core/errors/fauilers.dart';
+import '../../data/models/results_model.dart';
 
 class FilterController extends GetxController {
   GetCategoriesUseCase categoriesUseCase;
@@ -18,9 +19,9 @@ class FilterController extends GetxController {
       {required this.categoriesUseCase, required this.resultsUseCase});
 
   CategoriesEntity categoriesEntity = CategoriesEntity(categoriesData: []);
-  ResultsData resultsData=ResultsData(id: 0,
-      bedroom: 0, image: '', livingRoom: 0, area: 0, bathroom: 0);
-
+  // ResultsModel resultsData = ResultsData(
+  //     id: 0, bedroom: 0, image: '', livingRoom: 0, area: 0, bathroom: 0);
+  ResultsModel? resultsData ;
   bool isLoading = false;
   bool isLoadingResults = false;
 
@@ -57,12 +58,12 @@ class FilterController extends GetxController {
   ];
 
   List<String> cites = [
-    AppTexts. beitHanoun,
-    AppTexts. Jabalia,
-    AppTexts. khanYunis,
-    AppTexts. deiralBalah,
-    AppTexts. beitLahiya,
-    AppTexts. baniSuheila,
+    AppTexts.beitHanoun,
+    AppTexts.Jabalia,
+    AppTexts.khanYunis,
+    AppTexts.deiralBalah,
+    AppTexts.beitLahiya,
+    AppTexts.baniSuheila,
   ];
   String? selectedValue;
   String? selectedValue1;
@@ -90,18 +91,8 @@ class FilterController extends GetxController {
   static int selectedIndex = -1;
 
   List counts = [count, count1, count2, count3];
-  List<Function> increments = [
-    increment,
-    increment1,
-    increment2,
-    increment3
-  ];
-  List<Function> decrements = [
-    decrement,
-    decrement1,
-    decrement2,
-    decrement3
-  ];
+  List<Function> increments = [increment, increment1, increment2, increment3];
+  List<Function> decrements = [decrement, decrement1, decrement2, decrement3];
 
   static void increment() {
     count++;
@@ -122,67 +113,64 @@ class FilterController extends GetxController {
   static void decrement() {
     if (count <= 0) {
       count == 0;
-    }
-    else
+    } else
       count--;
   }
 
   static void decrement1() {
     if (count1 <= 0) {
       count == 0;
-    }
-    else
+    } else
       count1--;
   }
 
   static void decrement2() {
     if (count2 <= 0) {
       count == 0;
-    }
-    else
+    } else
       count2--;
   }
 
   static void decrement3() {
     if (count3 <= 0) {
       count == 0;
-    }
-    else
+    } else
       count3--;
   }
 
-
   Future getCategories() async {
     startLoading();
-    var response = await categoriesUseCase?.call();
+    var response = await categoriesUseCase.call();
     endLoading();
     print(response);
-    response?.fold((l) {
+    response.fold((l) {
       ConnectionFailure();
     }, (r) {
       categoriesEntity.categoriesData = r.categoriesData;
     });
     endLoading();
   }
-  Future getResults(
-  {
-    required String category_id, required String price,
-    required String area, required String bathroom,
-    required String bedroom, required String agent_id,
-}
-      ) async {
+
+  Future getResults({
+    required String category_id,
+    required String price,
+    required String area,
+    required String bathroom,
+    required String bedroom,
+    required String agent_id,
+  }) async {
     startLoadingResults();
-    var response = await resultsUseCase.call(category_id, price, area, bathroom, bedroom, agent_id);
+    var response = await resultsUseCase.call(
+        category_id, price, area, bathroom, bedroom, agent_id);
     endLoadingResults();
     print(response);
-    response?.fold((l) {
+    response.fold((l) {
+      print("This left ");
       ConnectionFailure();
     }, (r) {
-      resultsData=r;
+      resultsData = r;
       Get.toNamed(AppRoutes.getResultsRout());
     });
     endLoadingResults();
   }
-
-
 }

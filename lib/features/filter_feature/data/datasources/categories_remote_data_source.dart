@@ -9,7 +9,7 @@ import '../../../../core/errors/exceptions.dart';
 abstract class CategoriesRemoteDataSource {
   Future<CategoriesModel> getCategories();
 
-  Future<ResultsDataModel> getResults({
+  Future<ResultsModel> getResults({
     required String category_id,
     required String price,
     required String area,
@@ -46,7 +46,7 @@ class CategoriesRemotImp implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<ResultsDataModel> getResults(
+  Future<ResultsModel> getResults(
       {required String category_id,
       required String price,
       required String area,
@@ -55,18 +55,18 @@ class CategoriesRemotImp implements CategoriesRemoteDataSource {
       required String agent_id}
       ) async {
     var response = await dio.post(EndPoints.filter, data: {
-      'category_id': category_id,
-      'price': price,
-      'area': area,
-      'bathroom': bathroom,
-      'bedroom': bedroom,
-      'agent_id': agent_id,
+      'category_id': "1",
+      'price': "100 ; 2000000",
+      'area': "0; 1000",
+      'bathroom': "3",
+      'bedroom': "3",
+      'agent_id': "3",
     });
     if (response.statusCode == 200) {
-      print(response.toString());
-      ResultsDataModel resultsModel = ResultsDataModel.fromJson(response.data);
+      print("This is data ${response.data}");
+      ResultsModel resultsModel = ResultsModel.fromJson(response.data);
 
-      print(resultsModel);
+      print("This is in ${resultsModel.resultsData}");
       return resultsModel;
     } else {
       throw ServerException();

@@ -19,21 +19,21 @@ class ResultsData extends Equatable {
   int area;
   Agent? agent;
 
-
   ResultsData({
     required this.id,
     required this.bedroom,
     required this.image,
-     this.agent,
+    this.agent,
     required this.livingRoom,
     required this.area,
-
     required this.bathroom,
   });
 
   @override
   // TODO: implement props
-  List<Object?> get props =>[id,bathroom,bedroom,image,area,agent,livingRoom];
+  List<Object?> get props =>
+      [id, bathroom, bedroom, image, area, agent, livingRoom];
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
@@ -60,6 +60,7 @@ class Agent extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [id, image, name];
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;

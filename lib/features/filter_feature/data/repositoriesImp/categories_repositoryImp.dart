@@ -8,6 +8,7 @@ import '../../../../core/app_network/cache_helper.dart';
 import '../../../../core/app_network/network_info.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/fauilers.dart';
+import '../models/results_model.dart';
 
 class CategoriesRepositoryImp implements CategoriesRepository{
   final CategoriesRemoteDataSource categoriesRemoteDataSource;
@@ -42,7 +43,7 @@ class CategoriesRepositoryImp implements CategoriesRepository{
   }
 
   @override
-  Future<Either<Failure, ResultsData>> getResults(String category_id, String price, String area, String bathroom, String bedroom, String agent_id) async{
+  Future<Either<Failure, ResultsModel>> getResults(String category_id, String price, String area, String bathroom, String bedroom, String agent_id) async{
     if (await networkInfo.isConnected) {
       try {
         final response = await categoriesRemoteDataSource.getResults(category_id: category_id, price: price, area: area, bathroom: bathroom, bedroom: bedroom, agent_id: agent_id);
@@ -50,9 +51,11 @@ class CategoriesRepositoryImp implements CategoriesRepository{
 
         // authLocalDataSource.cacheLogin(response.token??'');
 
-
+        print("This in repo response ${response}");
         return Right(response);
-      } on DioError {
+      } on DioError catch (e) {
+
+        print("This in repo impl${e.response}");
         return Left(ServerFailure());
       }
     }

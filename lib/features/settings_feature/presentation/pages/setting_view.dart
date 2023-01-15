@@ -23,81 +23,87 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          AppBar(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            AppBar(
               title: Text(AppTexts.settings.tr),
               backgroundColor: context.theme.scaffoldBackgroundColor,
             ),
-          Padding(
-            padding: EdgeInsets.all(AppSizes.padding20.h.w),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(AppSizes.padding20 / 2.h.w),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(AppSizes.radius8),
-                        color: AppColors.primaryColor.withOpacity(0.8)),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const CircleAvatar(
-                          backgroundImage: ExactAssetImage(AppImages.userImage),
-                          radius: AppSizes.radius40,
-                        ),
-                        const SizedBox(
-                          width: AppSizes.height10,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppTexts.userName.tr,
-                              style: context.theme.textTheme.headline2,
-                            ),
-                            Text(AppTexts.userEmail.tr),
-                          ],
-                        ),
-                        const Spacer(),
-                        IconButton(
-                            onPressed: () {
-                              Get.toNamed(AppRoutes.getEditProfileRout());
-                            },
-                            icon: Icon(
-                              Icons.edit_outlined,
-                              size: AppSizes.height20 + 10,
-                              color: AppColors.headLine2Color,
-                            ))
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: AppSizes.padding20,
-                  ),
-                  ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Card(
-                            child: ListTile(
-                              title: Text(
-                                AppTexts.settingListTiles[index].tr,
-                                style: context.theme.textTheme.headline4,
+            Padding(
+              padding: EdgeInsets.all(AppSizes.padding20.h.w),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(AppSizes.padding20 / 2.h.w),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(AppSizes.radius8),
+                          color: AppColors.primaryColor.withOpacity(0.8)),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const CircleAvatar(
+                            backgroundImage: ExactAssetImage(
+                                AppImages.userImage),
+                            radius: AppSizes.radius40,
+                          ),
+                          const SizedBox(
+                            width: AppSizes.height10,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppTexts.userName.tr,
+                                style: context.theme.textTheme.headline2,
                               ),
-                              trailing: controller.settingTrailingIcons[index],
-                              leading: controller.settingListIcons[index],
+                              Text(AppTexts.userEmail.tr),
+                            ],
+                          ),
+                          const Spacer(),
+                          IconButton(
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.getEditProfileRout());
+                              },
+                              icon: Icon(
+                                Icons.edit_outlined,
+                                size: AppSizes.height20 + 10,
+                                color: AppColors.headLine2Color,
+                              ))
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: AppSizes.padding20,
+                    ),
+                    ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) =>
+                            Card(
+                              child: ListTile(
+                                title: Text(
+                                  AppTexts.settingListTiles[index].tr,
+                                  style: context.theme.textTheme.headline4,
+                                ),
+                                trailing: controller
+                                    .settingTrailingIcons[index],
+                                leading: controller.settingListIcons[index],
+                              ),
                             ),
-                          ),
-                      separatorBuilder: (context, index) => SizedBox(
-                            height: AppSizes.height10.h,
-                          ),
-                      itemCount: AppTexts.settingListTiles.length)
-                ],
+                        separatorBuilder: (context, index) =>
+                            SizedBox(
+                              height: AppSizes.height10.h,
+                            ),
+                        itemCount: AppTexts.settingListTiles.length)
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

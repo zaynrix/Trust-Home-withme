@@ -69,7 +69,7 @@ class FilterScreenState extends State<FilterScreen> {
                               .toList(),
                           value: controller.selectedValue,
                           onChanged: (value) {
-                            setState(() => controller.selectedValue = value);
+                            setState(() => controller.selectedValue = value as String?);
                           },
                           icon: const Icon(
                             Icons.arrow_drop_down,
@@ -143,7 +143,7 @@ class FilterScreenState extends State<FilterScreen> {
                               .toList(),
                           value: controller.selectedValue1,
                           onChanged: (value) {
-                            setState(() => controller.selectedValue1 = value);
+                            setState(() => controller.selectedValue1 = value as String?);
                           },
                           icon: const Icon(
                             Icons.arrow_drop_down,

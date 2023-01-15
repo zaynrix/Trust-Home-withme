@@ -20,18 +20,21 @@ class ResultsScreen extends GetView<FilterController> {
         body: SizedBox(
           width: double.infinity,
           height: double.infinity,
-          child: ListView.builder(
-              itemCount: AppImages.houses.length,
-              itemBuilder: (context, index) => ResultCard(
-                      homeEntity: HomeEntity(
-                    image: AppImages.houses[index],
-                    area: '200 م2',
-                    bathrooms: "${AppTexts.bath.tr}2",
-                    bedrooms: "${AppTexts.bedroom.tr}2",
-                    location: AppTexts.palestine.tr,
-                    subLocation1: AppTexts.gaza.tr,
-                    subLocation2: AppTexts.region.tr,
-                  ))),
+          child:   GetBuilder<FilterController>(
+            builder: (controller) =>
+             ListView.builder(
+                itemCount: controller.resultsData!.resultsData.length,
+                itemBuilder: (context, index) => ResultCard(
+                        homeEntity: HomeEntity(
+                      image:  AppImages.houses[index],
+                      area: '${ controller.resultsData!.resultsData[index].area}',
+                      bathrooms: "${ controller.resultsData!.resultsData[index].bathroom}2",
+                      bedrooms: "${ controller.resultsData!.resultsData[index].bedroom}2",
+                      location: AppTexts.palestine.tr,
+                      subLocation1: AppTexts.gaza.tr,
+                      subLocation2: AppTexts.region.tr,
+                    ))),
+          ),
         ));
   }
 }

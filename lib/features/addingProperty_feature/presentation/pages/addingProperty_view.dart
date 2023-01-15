@@ -75,7 +75,7 @@ var formKey=GlobalKey<FormState>();
                             .toList(),
                         value: controller.selectedValue1,
                         onChanged: (value) {
-                          setState(() => controller.selectedValue1 = value);
+                          setState(() => controller.selectedValue1 = value as String);
                         },
                         icon: const Icon(
                           Icons.arrow_drop_down,

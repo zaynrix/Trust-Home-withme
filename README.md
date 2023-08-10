@@ -1,16 +1,21 @@
-# final_project
 
-A new Flutter project.
+# Trust Homes 
+## Demo
+![1](https://github.com/zaynrix/Trust-Home-withme/assets/28483872/8e3a01cf-7efc-48f9-8850-b7a08a2b0bbf)
 
-## Getting Started
+![2](https://github.com/zaynrix/Trust-Home-withme/assets/28483872/81912c67-fc09-4b34-8d88-01ff4ea9272d)
 
-This project is a starting point for a Flutter application.
+![3](https://github.com/zaynrix/Trust-Home-withme/assets/28483872/fbbac665-2e59-4951-b300-35d2eab25ce3)
 
-A few resources to get you started if this is your first Flutter project:
+## Important Dependencie
+* Get
+* Flutter Screenutil
+* Flutter Map
+* Share Plus
+* Dio
+* Internet Connection Checker
+* Shared Preferences
+* Equatable
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
